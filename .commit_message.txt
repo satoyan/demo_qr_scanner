@@ -1,4 +1,0 @@
-Refactor: Separate ThemeData to app_theme.dart
-
-Moved the application's ThemeData definition from `main.dart` to a new dedicated file `lib/theme/app_theme.dart`.
-Updated `main.dart` to import and use the new `appTheme` instance, improving theme management and organization.

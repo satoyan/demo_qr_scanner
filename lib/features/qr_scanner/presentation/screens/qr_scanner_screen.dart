@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:demo_qr_scanner/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
 
 class QrScannerScreen extends StatefulWidget {
   const QrScannerScreen({super.key});
@@ -90,7 +90,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             child: Center(
               child: _isScanning
                   ? Text(
-                      context.l10n.scanningForQrCode,
+                      context.l10n.scanQrCodeInstruction,
                       style: context.textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )

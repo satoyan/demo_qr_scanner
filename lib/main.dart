@@ -2,7 +2,7 @@ import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart'; // Import for initializeDateFormatting
 import 'package:demo_qr_scanner/routes/app_router.dart'; // Import appRouter
-import 'package:demo_qr_scanner/theme/app_theme.dart'; // Import appTheme
+import 'package:demo_qr_scanner/core/theme/app_theme.dart'; // Import appTheme
 
 void main() async {
   // Make main async

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async'; // Import for Timer
-import 'package:demo_qr_scanner/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
+import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
 import 'package:go_router/go_router.dart'; // Import for context.pop
-import 'package:demo_qr_scanner/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key, required this.qrCodeValue});
