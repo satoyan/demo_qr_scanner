@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async'; // Import for Timer
 import 'package:demo_qr_scanner/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
+import 'package:go_router/go_router.dart'; // Import for context.pop
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key, required this.qrCodeValue});
@@ -34,7 +35,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _buildSquareButton(BuildContext context, String text, Color color) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        context.pop(); // Navigate back to the previous screen
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: color, // Set background color
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),

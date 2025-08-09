@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart'; // Import for SchedulerBinding
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -21,26 +20,29 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       setState(() {
         _isScanning = false; // Update UI to show detected state
       });
-      final qrCodeValue = barcodes.first.rawValue;
-      if (qrCodeValue != null) {
-        // Stop scanning to prevent multiple detections and navigations
-        await _scannerController.stop();
-
-        // Defer navigation to the next frame
-        SchedulerBinding.instance.addPostFrameCallback((_) async {
-          if (!context.mounted) {
-            return;
-          }
-
-          await context.push('/details', extra: qrCodeValue);
-          // After returning from details screen, restart scanner and reset UI
-          setState(() {
-            _isScanning = true;
-          });
-          await _scannerController.start();
-        });
-      }
+      await _handleQrCode(barcodes.first.rawValue);
     }
+  }
+
+  Future<void> _handleQrCode(String? qrCodeValue) async {
+    if (qrCodeValue == null) {
+      return;
+    }
+
+    // Stop scanning to prevent multiple detections and navigations
+    await _scannerController.stop();
+
+    if (!context.mounted) {
+      return;
+    }
+
+    // ignore: use_build_context_synchronously
+    await context.push('/details', extra: qrCodeValue);
+    // After returning from details screen, restart scanner and reset UI
+    setState(() {
+      _isScanning = true;
+    });
+    await _scannerController.start();
   }
 
   Future<void> _initController() async {
@@ -81,7 +83,11 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
           Expanded(
             child: Center(
               child: _isScanning
-                  ? const Text('Scanning for QR code...')
+                  ? Text(
+                      'QRコードをかざしてください',
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    )
                   : const Text('QR code detected!'),
             ),
           ),
