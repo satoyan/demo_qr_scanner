@@ -47,10 +47,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-          ), // Ensure text is visible
+          style: Theme.of(context).textTheme.labelLarge, // Use theme style
         ),
       ),
     );
@@ -70,23 +67,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 children: [
                   Text(
                     DateTimeFormatter.formatDate(_currentTime),
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
                   ),
                   Text(
                     DateTimeFormatter.formatTime(_currentTime),
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
                   ),
                 ],
               ),
             ),
           ),
-          Text('QR Code: ${widget.qrCodeValue}'),
+          Text('QR Code: ${widget.qrCodeValue}', style: Theme.of(context).textTheme.bodyLarge),
           const SizedBox(height: 20),
           Expanded(
             child: GridView.count(

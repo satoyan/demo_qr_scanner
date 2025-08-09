@@ -73,7 +73,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('QR Scanner')),
+      appBar: AppBar(title: Text('QR Scanner', style: Theme.of(context).textTheme.titleLarge)),
       body: Column(
         children: [
           SizedBox(
@@ -85,10 +85,10 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               child: _isScanning
                   ? Text(
                       'QRコードをかざしてください',
-                      style: TextStyle(fontSize: 24),
+                      style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )
-                  : const Text('QR code detected!'),
+                  : Text('QR code detected!', style: Theme.of(context).textTheme.bodyLarge),
             ),
           ),
         ],
