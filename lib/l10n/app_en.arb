@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "appTitle": "Flutter Demo",
+  "qrScannerScreenTitle": "QR Scanner",
+  "detailsScreenTitle": "Details",
+  "scanQrCodeInstruction": "Hold the QR code over the camera",
+  "scanningForQrCode": "Scanning for QR code...",
+  "qrCodeDetected": "QR code detected!",
+  "buttonShukkin": "Attendance",
+  "buttonTaikin": "Leave",
+  "buttonKyukeiKaishi": "Break Start",
+  "buttonKyukeiOwari": "Break End",
+  "qrCodeLabel": "QR Code:"
+}

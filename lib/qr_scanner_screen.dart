@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:demo_qr_scanner/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
 
 class QrScannerScreen extends StatefulWidget {
   const QrScannerScreen({super.key});
@@ -73,7 +74,12 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('QR Scanner', style: Theme.of(context).textTheme.titleLarge)),
+      appBar: AppBar(
+        title: Text(
+          context.l10n.qrScannerScreenTitle,
+          style: context.textTheme.titleLarge,
+        ),
+      ),
       body: Column(
         children: [
           SizedBox(
@@ -84,11 +90,14 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             child: Center(
               child: _isScanning
                   ? Text(
-                      'QRコードをかざしてください',
-                      style: Theme.of(context).textTheme.headlineMedium,
+                      context.l10n.scanningForQrCode,
+                      style: context.textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )
-                  : Text('QR code detected!', style: Theme.of(context).textTheme.bodyLarge),
+                  : Text(
+                      context.l10n.qrCodeDetected,
+                      style: context.textTheme.bodyLarge,
+                    ),
             ),
           ),
         ],

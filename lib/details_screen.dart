@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async'; // Import for Timer
 import 'package:demo_qr_scanner/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
 import 'package:go_router/go_router.dart'; // Import for context.pop
+import 'package:demo_qr_scanner/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key, required this.qrCodeValue});
@@ -47,7 +48,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelLarge, // Use theme style
+          style: context.textTheme.labelLarge, // Use theme style
         ),
       ),
     );
@@ -56,7 +57,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Details')),
+      appBar: AppBar(
+        title: Text(context.l10n.detailsScreenTitle),
+      ),
       body: Column(
         children: [
           Padding(
@@ -67,17 +70,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 children: [
                   Text(
                     DateTimeFormatter.formatDate(_currentTime),
-                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                    style: context.textTheme.headlineMedium, // Use theme style
                   ),
                   Text(
                     DateTimeFormatter.formatTime(_currentTime),
-                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                    style: context.textTheme.headlineMedium, // Use theme style
                   ),
                 ],
               ),
             ),
           ),
-          Text('QR Code: ${widget.qrCodeValue}', style: Theme.of(context).textTheme.bodyLarge),
+          Text(
+            '${context.l10n.qrCodeLabel} ${widget.qrCodeValue}',
+            style: context.textTheme.bodyLarge,
+          ),
           const SizedBox(height: 20),
           Expanded(
             child: GridView.count(
@@ -86,10 +92,26 @@ class _DetailsScreenState extends State<DetailsScreen> {
               mainAxisSpacing: 10,
               padding: const EdgeInsets.all(10),
               children: [
-                _buildSquareButton(context, '出勤', Colors.blue),
-                _buildSquareButton(context, '退勤', Colors.red),
-                _buildSquareButton(context, '休憩開始', Colors.green),
-                _buildSquareButton(context, '休憩終わり', Colors.orange),
+                _buildSquareButton(
+                  context,
+                  context.l10n.buttonShukkin,
+                  Colors.blue,
+                ),
+                _buildSquareButton(
+                  context,
+                  context.l10n.buttonTaikin,
+                  Colors.red,
+                ),
+                _buildSquareButton(
+                  context,
+                  context.l10n.buttonKyukeiKaishi,
+                  Colors.green,
+                ),
+                _buildSquareButton(
+                  context,
+                  context.l10n.buttonKyukeiOwari,
+                  Colors.orange,
+                ),
               ],
             ),
           ),

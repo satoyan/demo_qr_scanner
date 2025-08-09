@@ -1,0 +1,14 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Flutter デモ",
+  "qrScannerScreenTitle": "QRスキャナー",
+  "detailsScreenTitle": "詳細",
+  "scanQrCodeInstruction": "QRコードをかざしてください",
+  "scanningForQrCode": "QRコードをスキャン中...",
+  "qrCodeDetected": "QRコードを検出しました！",
+  "buttonShukkin": "出勤",
+  "buttonTaikin": "退勤",
+  "buttonKyukeiKaishi": "休憩開始",
+  "buttonKyukeiOwari": "休憩終わり",
+  "qrCodeLabel": "QRコード："
+}
