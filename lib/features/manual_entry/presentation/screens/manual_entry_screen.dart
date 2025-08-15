@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
 import 'package:demo_qr_scanner/features/manual_entry/presentation/controllers/manual_entry_controller.dart'; // Import ManualEntryController
+import 'package:demo_qr_scanner/core/utils/app_validator.dart'; // Import AppValidator
 
 class ManualEntryScreen extends GetView<ManualEntryController> {
   const ManualEntryScreen({super.key});
@@ -26,12 +27,7 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
                   labelText: context.l10n.enterIdHint,
                   border: const OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter ID'; // TODO: Localize this
-                  }
-                  return null;
-                },
+                validator: (value) => AppValidator.isNotEmpty(value, 'ID'),
               ),
               const SizedBox(height: AppSpacing.m),
               TextFormField(
@@ -40,12 +36,7 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
                   labelText: context.l10n.enterNameHint,
                   border: const OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter Name'; // TODO: Localize this
-                  }
-                  return null;
-                },
+                validator: (value) => AppValidator.isNotEmpty(value, 'Name'),
               ),
               const SizedBox(height: AppSpacing.xl),
               ElevatedButton(
