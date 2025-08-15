@@ -62,12 +62,12 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
               children: [
                 Text(
                   employee.name,
-                  style: context.theme.textTheme.headlineSmall,
+                  style: context.theme.textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   'ID: ${employee.id}',
-                  style: context.theme.textTheme.bodyLarge,
+                  style: context.theme.textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
               ],
