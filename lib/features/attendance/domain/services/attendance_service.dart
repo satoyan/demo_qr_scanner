@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart';
 import 'package:demo_qr_scanner/core/database/database_service.dart'; // Import DatabaseService
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // Import AppDatabase for types
 

@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart';
 
 abstract class DatabaseService {
@@ -7,3 +6,4 @@ abstract class DatabaseService {
   Future<List<AttendanceRecord>> getUnsyncedAttendanceRecords();
   Future<void> markAsSynced(AttendanceRecord record);
 }
+
