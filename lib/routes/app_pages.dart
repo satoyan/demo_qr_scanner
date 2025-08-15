@@ -10,16 +10,16 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.QR_SCANNER;
+  static const initialRoute = Routes.qrScanner;
 
   static final routes = [
     GetPage(
-      name: _Paths.QR_SCANNER,
+      name: _Paths.qrScanner,
       page: () => const QrScannerScreen(),
       binding: QrScannerBinding(),
     ),
     GetPage(
-      name: _Paths.ATTENDANCE_STATUS,
+      name: _Paths.attendanceStatus,
       page: () => AttendanceStatusScreen(employee: Get.arguments as Employee),
       binding: AttendanceStatusBinding(),
     ),

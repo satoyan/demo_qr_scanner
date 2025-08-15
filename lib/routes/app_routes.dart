@@ -1,16 +1,14 @@
-// ignore_for_file: constant_identifier_names
-
 part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const QR_SCANNER = _Paths.QR_SCANNER;
-  static const ATTENDANCE_STATUS = _Paths.ATTENDANCE_STATUS;
+  static const qrScanner = _Paths.qrScanner;
+  static const attendanceStatus = _Paths.attendanceStatus;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const QR_SCANNER = '/';
-  static const ATTENDANCE_STATUS = '/attendance_status';
+  static const qrScanner = '/';
+  static const attendanceStatus = '/attendance_status';
 }
 

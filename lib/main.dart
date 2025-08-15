@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Demo QR Scanner', // Set a default title
-      initialRoute: AppPages.initial,
+      initialRoute: AppPages.initialRoute,
       getPages: AppPages.routes,
       onGenerateTitle: (context) => context.l10n.appTitle,
       theme: appTheme, // Use appTheme

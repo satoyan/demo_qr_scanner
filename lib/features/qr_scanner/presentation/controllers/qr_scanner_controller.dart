@@ -45,7 +45,7 @@ class QrScannerController extends GetxController {
       final Map<String, dynamic> jsonMap = jsonDecode(qrCodeValue);
       final Employee employee = Employee.fromJson(jsonMap);
       appLogger.d('Parsed Employee: ${employee.id}, ${employee.name}');
-      Get.toNamed(Routes.ATTENDANCE_STATUS, arguments: employee);
+      Get.toNamed(Routes.attendanceStatus, arguments: employee);
     } catch (e) {
       appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
