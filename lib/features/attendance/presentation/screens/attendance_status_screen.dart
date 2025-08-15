@@ -4,16 +4,16 @@ import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import 
 import 'package:go_router/go_router.dart'; // Import for context.pop
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
 
-class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key, required this.qrCodeValue});
+class AttendanceStatusScreen extends StatefulWidget {
+  const AttendanceStatusScreen({super.key, required this.qrCodeValue});
 
   final String qrCodeValue;
 
   @override
-  State<DetailsScreen> createState() => _DetailsScreenState();
+  State<AttendanceStatusScreen> createState() => _AttendanceStatusScreenState();
 }
 
-class _DetailsScreenState extends State<DetailsScreen> {
+class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
   late DateTime _currentTime;
   late Timer _timer;
 
