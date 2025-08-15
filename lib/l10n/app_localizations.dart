@@ -169,6 +169,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you don\'t have a QR code, click here'**
   String get noQrCodeOption;
+
+  /// No description provided for @enterIdHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter ID'**
+  String get enterIdHint;
+
+  /// No description provided for @enterNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Name'**
+  String get enterNameHint;
+
+  /// No description provided for @confirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirmButton;
 }
 
 class _AppLocalizationsDelegate

@@ -11,5 +11,8 @@
   "buttonKyukeiKaishi": "休憩開始",
   "buttonKyukeiOwari": "休憩終わり",
   "qrCodeLabel": "QRコード：",
-  "noQrCodeOption": "QRコードがない場合はこちら"
+  "noQrCodeOption": "QRコードがない場合はこちら",
+  "enterIdHint": "IDを入力",
+  "enterNameHint": "氏名を入力",
+  "confirmButton": "確定"
 }

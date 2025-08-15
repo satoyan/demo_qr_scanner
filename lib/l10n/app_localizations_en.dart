@@ -43,4 +43,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noQrCodeOption => 'If you don\'t have a QR code, click here';
+
+  @override
+  String get enterIdHint => 'Enter ID';
+
+  @override
+  String get enterNameHint => 'Enter Name';
+
+  @override
+  String get confirmButton => 'Confirm';
 }

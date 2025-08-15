@@ -43,4 +43,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noQrCodeOption => 'QRコードがない場合はこちら';
+
+  @override
+  String get enterIdHint => 'IDを入力';
+
+  @override
+  String get enterNameHint => '氏名を入力';
+
+  @override
+  String get confirmButton => '確定';
 }
