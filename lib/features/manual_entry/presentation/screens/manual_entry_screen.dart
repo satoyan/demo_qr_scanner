@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
-import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart'; // Import Employee model
-import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages for Routes
 import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
+import 'package:demo_qr_scanner/features/manual_entry/presentation/controllers/manual_entry_controller.dart'; // Import ManualEntryController
 
-class ManualEntryScreen extends StatefulWidget {
+class ManualEntryScreen extends GetView<ManualEntryController> {
   const ManualEntryScreen({super.key});
-
-  @override
-  State<ManualEntryScreen> createState() => _ManualEntryScreenState();
-}
-
-class _ManualEntryScreenState extends State<ManualEntryScreen> {
-  final TextEditingController _idController = TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    _idController.dispose();
-    _nameController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +16,12 @@ class _ManualEntryScreenState extends State<ManualEntryScreen> {
       body: Padding(
         padding: const EdgeInsets.all(AppSpacing.m),
         child: Form(
-          key: _formKey,
+          key: controller.formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
-                controller: _idController,
+                controller: controller.idController,
                 decoration: InputDecoration(
                   labelText: context.l10n.enterIdHint,
                   border: const OutlineInputBorder(),
@@ -52,7 +35,7 @@ class _ManualEntryScreenState extends State<ManualEntryScreen> {
               ),
               const SizedBox(height: AppSpacing.m),
               TextFormField(
-                controller: _nameController,
+                controller: controller.nameController,
                 decoration: InputDecoration(
                   labelText: context.l10n.enterNameHint,
                   border: const OutlineInputBorder(),
@@ -66,15 +49,7 @@ class _ManualEntryScreenState extends State<ManualEntryScreen> {
               ),
               const SizedBox(height: AppSpacing.xl),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final employee = Employee(
-                      id: _idController.text,
-                      name: _nameController.text,
-                    );
-                    Get.toNamed(Routes.attendanceStatus, arguments: employee);
-                  }
-                },
+                onPressed: controller.confirmEntry,
                 child: Text(context.l10n.confirmButton),
               ),
             ],

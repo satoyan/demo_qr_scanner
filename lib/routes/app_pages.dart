@@ -5,6 +5,7 @@ import 'package:demo_qr_scanner/features/attendance/presentation/bindings/attend
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/bindings/qr_scanner_binding.dart';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart'; // Import Employee model
 import 'package:demo_qr_scanner/features/manual_entry/presentation/screens/manual_entry_screen.dart'; // Import ManualEntryScreen
+import 'package:demo_qr_scanner/features/manual_entry/presentation/bindings/manual_entry_binding.dart'; // Import ManualEntryBinding
 
 part 'app_routes.dart';
 
@@ -27,6 +28,7 @@ class AppPages {
     GetPage(
       name: _Paths.manualEntry,
       page: () => const ManualEntryScreen(),
+      binding: ManualEntryBinding(),
     ),
   ];
 }
