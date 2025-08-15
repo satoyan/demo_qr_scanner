@@ -15,8 +15,10 @@ class ManualEntryController extends GetxController {
         id: idController.text,
         name: nameController.text,
       );
-      appLogger.d('Manually entered Employee: ${employee.id}, ${employee.name}');
-      Get.toNamed(Routes.attendanceStatus, arguments: employee);
+      appLogger.d(
+        'Manually entered Employee: ${employee.id}, ${employee.name}',
+      );
+      Get.offNamed(Routes.attendanceStatus, arguments: employee);
     }
   }
 
@@ -27,3 +29,4 @@ class ManualEntryController extends GetxController {
     super.onClose();
   }
 }
+

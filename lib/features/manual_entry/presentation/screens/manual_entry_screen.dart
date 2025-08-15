@@ -12,9 +12,7 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.noQrCodeOption),
-      ),
+      appBar: AppBar(title: Text(context.l10n.noQrCodeOption)),
       body: Padding(
         padding: const EdgeInsets.all(AppSpacing.m),
         child: Form(
@@ -25,12 +23,15 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
               TextFormField(
                 controller: controller.idController,
                 keyboardType: TextInputType.text,
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))],
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                ],
                 decoration: InputDecoration(
                   labelText: context.l10n.enterIdHint,
                   border: const OutlineInputBorder(),
                 ),
-                validator: (value) => AppValidator.isNotEmpty(value, context.l10n.idEmptyError),
+                validator: (value) =>
+                    AppValidator.isNotEmpty(value, context.l10n.idEmptyError),
               ),
               const SizedBox(height: AppSpacing.m),
               TextFormField(
@@ -41,7 +42,8 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
                   labelText: context.l10n.enterNameHint,
                   border: const OutlineInputBorder(),
                 ),
-                validator: (value) => AppValidator.isNotEmpty(value, context.l10n.nameEmptyError),
+                validator: (value) =>
+                    AppValidator.isNotEmpty(value, context.l10n.nameEmptyError),
               ),
               const SizedBox(height: AppSpacing.xl),
               ElevatedButton(
@@ -55,3 +57,4 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
     );
   }
 }
+
