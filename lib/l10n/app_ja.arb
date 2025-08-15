@@ -2,7 +2,7 @@
   "@@locale": "ja",
   "appTitle": "Flutter デモ",
   "qrScannerScreenTitle": "QRスキャナー",
-  "detailsScreenTitle": "詳細",
+  "detailsScreenTitle": "出退勤",
   "scanQrCodeInstruction": "QRコードをかざしてください",
   "scanningForQrCode": "QRコードをスキャン中...",
   "qrCodeDetected": "QRコードを検出しました！",

@@ -15,7 +15,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get qrScannerScreenTitle => 'QRスキャナー';
 
   @override
-  String get detailsScreenTitle => '詳細';
+  String get detailsScreenTitle => '出退勤';
 
   @override
   String get scanQrCodeInstruction => 'QRコードをかざしてください';
