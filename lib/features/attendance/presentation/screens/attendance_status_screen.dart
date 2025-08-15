@@ -5,11 +5,12 @@ import 'package:demo_qr_scanner/features/attendance/presentation/controllers/att
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
 import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_status.dart'; // Import AttendanceStatus
+import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart'; // Import Employee model
 
 class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
-  const AttendanceStatusScreen({super.key, required this.qrCodeValue});
+  const AttendanceStatusScreen({super.key, required this.employee});
 
-  final String qrCodeValue;
+  final Employee employee;
 
   Widget _buildSquareButton(BuildContext context, String text, Color color, VoidCallback onPressed) {
     return ElevatedButton(
@@ -56,7 +57,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
             ),
           ),
           Text(
-            '${context.l10n.qrCodeLabel} $qrCodeValue',
+            '${context.l10n.qrCodeLabel} ${employee.name} (ID: ${employee.id})',
             style: context.theme.textTheme.bodyLarge,
           ),
           const SizedBox(height: AppSpacing.m),
@@ -71,25 +72,25 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
                   context,
                   context.l10n.buttonShukkin,
                   Colors.blue,
-                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.clockIn),
+                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.clockIn),
                 ),
                 _buildSquareButton(
                   context,
                   context.l10n.buttonTaikin,
                   Colors.red,
-                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.clockOut),
+                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.clockOut),
                 ),
                 _buildSquareButton(
                   context,
                   context.l10n.buttonKyukeiKaishi,
                   Colors.green,
-                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.startBreak),
+                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.startBreak),
                 ),
                 _buildSquareButton(
                   context,
                   context.l10n.buttonKyukeiOwari,
                   Colors.orange,
-                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.endBreak),
+                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.endBreak),
                 ),
               ],
             ),
