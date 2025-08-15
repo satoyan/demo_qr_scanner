@@ -23,7 +23,9 @@ class QrScannerController extends GetxController {
   }
 
   Future<void> _onBarcodeDetected(BarcodeCapture capture) async {
-    appLogger.d('Detected barcode: ${capture.barcodes.first.rawValue}'); // Use appLogger
+    appLogger.d(
+      'Detected barcode: ${capture.barcodes.first.rawValue}',
+    ); // Use appLogger
     final List<Barcode> barcodes = capture.barcodes;
     if (barcodes.isNotEmpty && isScanning.value) {
       isScanning.value = false; // Update UI to show detected state
@@ -45,9 +47,12 @@ class QrScannerController extends GetxController {
       appLogger.d('Parsed Employee: ${employee.id}, ${employee.name}');
       Get.toNamed(Routes.ATTENDANCE_STATUS, arguments: employee);
     } catch (e) {
-      appLogger.e('Error parsing QR code value as JSON: $e');
+      appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
-      Get.snackbar('Error', 'Invalid QR code format. Please scan a valid employee QR code.');
+      Get.snackbar(
+        'Error',
+        'Invalid QR code format. Please scan a valid employee QR code.',
+      );
       // Optionally, navigate to a different screen or restart scanning
     }
 

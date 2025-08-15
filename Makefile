@@ -6,10 +6,6 @@ run:
 	@echo "Running Flutter application..."
 	flutter run
 
-build:
-	@echo "Building Flutter application..."
-	flutter build apk
-
 clean:
 	@echo "Cleaning Flutter project..."
 	flutter clean
