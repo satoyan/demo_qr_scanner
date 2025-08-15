@@ -13,7 +13,7 @@ class QrScannerScreen extends GetView<QrScannerController> {
       appBar: AppBar(
         title: Text(
           context.l10n.qrScannerScreenTitle,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.theme.textTheme.titleLarge,
         ),
       ),
       body: Column(
@@ -27,12 +27,12 @@ class QrScannerScreen extends GetView<QrScannerController> {
               child: Obx(() => controller.isScanning.value
                   ? Text(
                       context.l10n.scanQrCodeInstruction,
-                      style: Theme.of(context).textTheme.headlineMedium,
+                      style: context.theme.textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )
                   : Text(
                       context.l10n.qrCodeDetected,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: context.theme.textTheme.bodyLarge,
                     )),
             ),
           ),

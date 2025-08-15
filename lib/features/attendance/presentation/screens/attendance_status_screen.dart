@@ -21,7 +21,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelLarge, // Use theme style
+          style: context.theme.textTheme.labelLarge, // Use theme style
         ),
       ),
     );
@@ -43,11 +43,11 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
                 children: [
                   Obx(() => Text(
                     DateTimeFormatter.formatDate(controller.currentTime),
-                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                    style: context.theme.textTheme.headlineMedium, // Use theme style
                   )),
                   Obx(() => Text(
                     DateTimeFormatter.formatTime(controller.currentTime),
-                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                    style: context.theme.textTheme.headlineMedium, // Use theme style
                   )),
                 ],
               ),
@@ -55,7 +55,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
           ),
           Text(
             '${context.l10n.qrCodeLabel} $qrCodeValue',
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: context.theme.textTheme.bodyLarge,
           ),
           const SizedBox(height: 20),
           Expanded(
