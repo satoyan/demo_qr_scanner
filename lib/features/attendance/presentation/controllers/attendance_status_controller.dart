@@ -4,6 +4,7 @@ import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_s
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // For AttendanceRecordsCompanion
 import 'package:drift/drift.dart' as drift; // Alias drift for Value
 import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_status.dart'; // Import AttendanceStatus
+import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages for Routes
 
 class AttendanceStatusController extends GetxController {
   final AttendanceService _attendanceService;
@@ -44,5 +45,6 @@ class AttendanceStatusController extends GetxController {
     );
     await _attendanceService.saveAttendanceRecord(newRecord);
     Get.snackbar('Success', 'Attendance recorded: ${status.name}');
+    Get.offAllNamed(Routes.qrScanner);
   }
 }
