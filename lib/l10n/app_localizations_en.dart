@@ -52,4 +52,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmButton => 'Confirm';
+
+  @override
+  String get idEmptyError => 'ID cannot be empty';
+
+  @override
+  String get nameEmptyError => 'Name cannot be empty';
 }

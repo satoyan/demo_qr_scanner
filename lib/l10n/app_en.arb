@@ -14,5 +14,7 @@
   "noQrCodeOption": "If you don't have a QR code, click here",
   "enterIdHint": "Enter ID",
   "enterNameHint": "Enter Name",
-  "confirmButton": "Confirm"
+  "confirmButton": "Confirm",
+  "idEmptyError": "ID cannot be empty",
+  "nameEmptyError": "Name cannot be empty"
 }

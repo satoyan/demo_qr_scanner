@@ -187,6 +187,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm'**
   String get confirmButton;
+
+  /// No description provided for @idEmptyError.
+  ///
+  /// In en, this message translates to:
+  /// **'ID cannot be empty'**
+  String get idEmptyError;
+
+  /// No description provided for @nameEmptyError.
+  ///
+  /// In en, this message translates to:
+  /// **'Name cannot be empty'**
+  String get nameEmptyError;
 }
 
 class _AppLocalizationsDelegate

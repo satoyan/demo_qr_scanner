@@ -52,4 +52,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get confirmButton => '確定';
+
+  @override
+  String get idEmptyError => 'IDは必須です';
+
+  @override
+  String get nameEmptyError => '氏名は必須です';
 }

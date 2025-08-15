@@ -14,5 +14,7 @@
   "noQrCodeOption": "QRコードがない場合はこちら",
   "enterIdHint": "IDを入力",
   "enterNameHint": "氏名を入力",
-  "confirmButton": "確定"
+  "confirmButton": "確定",
+  "idEmptyError": "IDは必須です",
+  "nameEmptyError": "氏名は必須です"
 }
