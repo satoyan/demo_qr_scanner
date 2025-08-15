@@ -58,4 +58,23 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nameEmptyError => '氏名は必須です';
+
+  @override
+  String get snackbarSuccessTitle => '成功';
+
+  @override
+  String get snackbarAttendanceRecorded => '勤怠を記録しました';
+
+  @override
+  String get snackbarErrorTitle => 'エラー';
+
+  @override
+  String get snackbarInvalidQrCodeFormat =>
+      '無効なQRコード形式です。有効な従業員QRコードをスキャンしてください。';
+
+  @override
+  String get snackbarSyncComplete => '同期完了';
+
+  @override
+  String get snackbarAllPendingRecordsSynced => '保留中の全レコードが正常に同期されました！';
 }

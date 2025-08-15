@@ -4,11 +4,13 @@ import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_s
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // For AttendanceRecordsCompanion
 import 'package:drift/drift.dart' as drift; // Alias drift for Value
 import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_status.dart'; // Import AttendanceStatus
+import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 class AttendanceStatusController extends GetxController {
   final AttendanceService _attendanceService;
   final _currentTime = DateTime.now().obs;
   late Timer _timer;
+  late LocalizationService _localizationService;
 
   AttendanceStatusController(this._attendanceService);
 
@@ -17,6 +19,7 @@ class AttendanceStatusController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _localizationService = Get.find<LocalizationService>();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _currentTime.value = DateTime.now();
     });
@@ -44,6 +47,6 @@ class AttendanceStatusController extends GetxController {
     );
     await _attendanceService.saveAttendanceRecord(newRecord);
     Get.back();
-    Get.snackbar('Success', 'Attendance recorded: ${status.name}');
+    Get.snackbar(_localizationService.snackbarSuccessTitle, '${_localizationService.snackbarAttendanceRecorded}: ${status.name}');
   }
 }

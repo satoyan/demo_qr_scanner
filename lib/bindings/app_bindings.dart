@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/network/network_controller.dart';
+import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 class AppBindings extends Bindings {
   @override
@@ -15,5 +16,6 @@ class AppBindings extends Bindings {
     Get.put<NetworkController>(
       NetworkController(Get.find<AttendanceService>()),
     ); // Register NetworkController
+    Get.put<LocalizationService>(LocalizationService()); // Register LocalizationService
   }
 }

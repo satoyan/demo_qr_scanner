@@ -2,16 +2,19 @@ import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
+import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 class NetworkController extends GetxController {
   final AttendanceService _attendanceService;
   var isConnected = false.obs;
+  late LocalizationService _localizationService;
 
   NetworkController(this._attendanceService);
 
   @override
   void onInit() {
     super.onInit();
+    _localizationService = Get.find<LocalizationService>();
     _checkConnectivity();
     Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> results) {
       _updateConnectivityStatus(results);
@@ -57,6 +60,6 @@ class NetworkController extends GetxController {
       await _attendanceService.markAsSynced(record);
       appLogger.d('Record ${record.id} synced successfully.');
     }
-    Get.snackbar('Sync Complete', 'All pending records synced successfully!');
+    Get.snackbar(_localizationService.snackbarSyncComplete, _localizationService.snackbarAllPendingRecordsSynced);
   }
 }

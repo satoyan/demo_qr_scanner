@@ -16,5 +16,11 @@
   "enterNameHint": "Enter Name",
   "confirmButton": "Confirm",
   "idEmptyError": "ID cannot be empty",
-  "nameEmptyError": "Name cannot be empty"
+  "nameEmptyError": "Name cannot be empty",
+  "snackbarSuccessTitle": "Success",
+  "snackbarAttendanceRecorded": "Attendance recorded",
+  "snackbarErrorTitle": "Error",
+  "snackbarInvalidQrCodeFormat": "Invalid QR code format. Please scan a valid employee QR code.",
+  "snackbarSyncComplete": "Sync Complete",
+  "snackbarAllPendingRecordsSynced": "All pending records synced successfully!"
 }

@@ -199,6 +199,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Name cannot be empty'**
   String get nameEmptyError;
+
+  /// No description provided for @snackbarSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get snackbarSuccessTitle;
+
+  /// No description provided for @snackbarAttendanceRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance recorded'**
+  String get snackbarAttendanceRecorded;
+
+  /// No description provided for @snackbarErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get snackbarErrorTitle;
+
+  /// No description provided for @snackbarInvalidQrCodeFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid QR code format. Please scan a valid employee QR code.'**
+  String get snackbarInvalidQrCodeFormat;
+
+  /// No description provided for @snackbarSyncComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync Complete'**
+  String get snackbarSyncComplete;
+
+  /// No description provided for @snackbarAllPendingRecordsSynced.
+  ///
+  /// In en, this message translates to:
+  /// **'All pending records synced successfully!'**
+  String get snackbarAllPendingRecordsSynced;
 }
 
 class _AppLocalizationsDelegate

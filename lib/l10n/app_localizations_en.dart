@@ -58,4 +58,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nameEmptyError => 'Name cannot be empty';
+
+  @override
+  String get snackbarSuccessTitle => 'Success';
+
+  @override
+  String get snackbarAttendanceRecorded => 'Attendance recorded';
+
+  @override
+  String get snackbarErrorTitle => 'Error';
+
+  @override
+  String get snackbarInvalidQrCodeFormat =>
+      'Invalid QR code format. Please scan a valid employee QR code.';
+
+  @override
+  String get snackbarSyncComplete => 'Sync Complete';
+
+  @override
+  String get snackbarAllPendingRecordsSynced =>
+      'All pending records synced successfully!';
 }

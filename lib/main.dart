@@ -7,6 +7,7 @@ import 'package:get/get.dart'; // Import GetX
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages
 import 'package:demo_qr_scanner/bindings/app_bindings.dart'; // Import AppBindings
+import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
@@ -15,6 +16,7 @@ void main() async {
     null,
   ); // Initialize date formatting for Japanese locale
   runApp(const MyApp());
+  Get.find<LocalizationService>().initL10n(); // Initialize LocalizationService with context
 }
 
 class MyApp extends StatelessWidget {

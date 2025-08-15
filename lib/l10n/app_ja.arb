@@ -16,5 +16,11 @@
   "enterNameHint": "氏名を入力",
   "confirmButton": "確定",
   "idEmptyError": "IDは必須です",
-  "nameEmptyError": "氏名は必須です"
+  "nameEmptyError": "氏名は必須です",
+  "snackbarSuccessTitle": "成功",
+  "snackbarAttendanceRecorded": "勤怠を記録しました",
+  "snackbarErrorTitle": "エラー",
+  "snackbarInvalidQrCodeFormat": "無効なQRコード形式です。有効な従業員QRコードをスキャンしてください。",
+  "snackbarSyncComplete": "同期完了",
+  "snackbarAllPendingRecordsSynced": "保留中の全レコードが正常に同期されました！"
 }
