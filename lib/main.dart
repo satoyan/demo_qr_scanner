@@ -13,9 +13,6 @@ import 'package:demo_qr_scanner/core/network/network_controller.dart'; // Import
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
-  Get.put<AppDatabase>(AppDatabase()); // Register AppDatabase as a singleton
-  Get.put<AttendanceService>(AttendanceService(Get.find<AppDatabase>())); // Register AttendanceService
-  Get.put<NetworkController>(NetworkController(Get.find<AttendanceService>())); // Register NetworkController
   await initializeDateFormatting(
     'ja',
     null,
@@ -47,6 +44,17 @@ class MyApp extends StatelessWidget {
       theme: appTheme, // Use appTheme
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      initialBinding: BindingsBuilder(() {
+        Get.put<AppDatabase>(
+          AppDatabase(),
+        ); // Register AppDatabase as a singleton
+        Get.put<AttendanceService>(
+          AttendanceService(Get.find<AppDatabase>()),
+        ); // Register AttendanceService
+        Get.put<NetworkController>(
+          NetworkController(Get.find<AttendanceService>()),
+        ); // Register NetworkController
+      }),
     );
   }
 }
