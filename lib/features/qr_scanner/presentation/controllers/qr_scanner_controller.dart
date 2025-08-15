@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:logger/logger.dart'; // Import for Logger
+import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
 
 class QrScannerController extends GetxController {
   late MobileScannerController scannerController;
   var isScanning = true.obs;
-  final Logger _logger = Logger(); // Create a Logger instance
 
   @override
   void onInit() {
@@ -21,7 +20,7 @@ class QrScannerController extends GetxController {
   }
 
   Future<void> _onBarcodeDetected(BarcodeCapture capture) async {
-    _logger.d('Detected barcode: ${capture.barcodes.first.rawValue}'); // Use logger
+    appLogger.d('Detected barcode: ${capture.barcodes.first.rawValue}'); // Use appLogger
     final List<Barcode> barcodes = capture.barcodes;
     if (barcodes.isNotEmpty && isScanning.value) {
       isScanning.value = false; // Update UI to show detected state
