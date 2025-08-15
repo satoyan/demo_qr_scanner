@@ -56,9 +56,22 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
               ),
             ),
           ),
-          Text(
-            '${context.l10n.qrCodeLabel} ${employee.name} (ID: ${employee.id})',
-            style: context.theme.textTheme.bodyLarge,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.m),
+            child: Column(
+              children: [
+                Text(
+                  employee.name,
+                  style: context.theme.textTheme.headlineSmall,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'ID: ${employee.id}',
+                  style: context.theme.textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: AppSpacing.m),
           Expanded(
