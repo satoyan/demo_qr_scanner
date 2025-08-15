@@ -1,28 +1,25 @@
 import 'package:drift/drift.dart';
-import 'package:demo_qr_scanner/core/database/app_database.dart';
+import 'package:demo_qr_scanner/core/database/database_service.dart'; // Import DatabaseService
+import 'package:demo_qr_scanner/core/database/app_database.dart'; // Import AppDatabase for types
 
 class AttendanceService {
-  final AppDatabase _db;
+  final DatabaseService _db;
 
   AttendanceService(this._db);
 
   Future<void> saveAttendanceRecord(AttendanceRecordsCompanion entry) async {
-    await _db.into(_db.attendanceRecords).insert(entry);
+    await _db.saveAttendanceRecord(entry);
   }
 
   Future<List<AttendanceRecord>> getAllAttendanceRecords() {
-    return _db.select(_db.attendanceRecords).get();
+    return _db.getAllAttendanceRecords();
   }
 
   Future<List<AttendanceRecord>> getUnsyncedAttendanceRecords() {
-    return (_db.select(
-      _db.attendanceRecords,
-    )..where((tbl) => tbl.isSynced.equals(false))).get();
+    return _db.getUnsyncedAttendanceRecords();
   }
 
   Future<void> markAsSynced(AttendanceRecord record) async {
-    await (_db.update(_db.attendanceRecords)
-          ..where((tbl) => tbl.id.equals(record.id)))
-        .write(AttendanceRecordsCompanion(isSynced: Value(true)));
+    await _db.markAsSynced(record);
   }
 }

@@ -37,6 +37,10 @@ build_runner_build:
 	@echo "Running Flutter build_runner to build..."
 	flutter packages pub run build_runner build --delete-conflicting-outputs
 
+build_mocks:
+	@echo "Generating mocks..."
+	flutter pub run build_runner build --delete-conflicting-outputs
+
 l10n:
 	@echo "Generating localization files..."
 	flutter gen-l10n
