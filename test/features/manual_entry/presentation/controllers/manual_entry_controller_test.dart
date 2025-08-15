@@ -10,7 +10,7 @@ import 'package:demo_qr_scanner/features/manual_entry/presentation/controllers/m
 import 'package:demo_qr_scanner/routes/app_pages.dart';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart';
 
-import '../mocks.mocks.dart'; // Import Employee
+import '../../../../mocks.mocks.dart';
 
 void main() {
   late ManualEntryController manualEntryController;
