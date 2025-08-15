@@ -10,5 +10,6 @@
   "buttonTaikin": "Leave",
   "buttonKyukeiKaishi": "Break Start",
   "buttonKyukeiOwari": "Break End",
-  "qrCodeLabel": "QR Code:"
+  "qrCodeLabel": "QR Code:",
+  "noQrCodeOption": "If you don't have a QR code, click here"
 }

@@ -40,4 +40,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get qrCodeLabel => 'QRコード：';
+
+  @override
+  String get noQrCodeOption => 'QRコードがない場合はこちら';
 }

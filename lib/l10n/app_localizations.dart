@@ -163,6 +163,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'QR Code:'**
   String get qrCodeLabel;
+
+  /// No description provided for @noQrCodeOption.
+  ///
+  /// In en, this message translates to:
+  /// **'If you don\'t have a QR code, click here'**
+  String get noQrCodeOption;
 }
 
 class _AppLocalizationsDelegate

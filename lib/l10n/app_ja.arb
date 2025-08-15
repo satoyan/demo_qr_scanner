@@ -10,5 +10,6 @@
   "buttonTaikin": "退勤",
   "buttonKyukeiKaishi": "休憩開始",
   "buttonKyukeiOwari": "休憩終わり",
-  "qrCodeLabel": "QRコード："
+  "qrCodeLabel": "QRコード：",
+  "noQrCodeOption": "QRコードがない場合はこちら"
 }

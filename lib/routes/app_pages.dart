@@ -4,6 +4,7 @@ import 'package:demo_qr_scanner/features/attendance/presentation/screens/attenda
 import 'package:demo_qr_scanner/features/attendance/presentation/bindings/attendance_status_binding.dart';
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/bindings/qr_scanner_binding.dart';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart'; // Import Employee model
+import 'package:demo_qr_scanner/features/manual_entry/presentation/screens/manual_entry_screen.dart'; // Import ManualEntryScreen
 
 part 'app_routes.dart';
 
@@ -22,6 +23,10 @@ class AppPages {
       name: _Paths.attendanceStatus,
       page: () => AttendanceStatusScreen(employee: Get.arguments as Employee),
       binding: AttendanceStatusBinding(),
+    ),
+    GetPage(
+      name: _Paths.manualEntry,
+      page: () => const ManualEntryScreen(),
     ),
   ];
 }
