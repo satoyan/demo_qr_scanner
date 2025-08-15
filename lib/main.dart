@@ -8,10 +8,14 @@ import 'package:demo_qr_scanner/features/qr_scanner/presentation/screens/qr_scan
 import 'package:demo_qr_scanner/features/attendance/presentation/screens/attendance_status_screen.dart'; // Import AttendanceStatusScreen
 import 'package:demo_qr_scanner/features/attendance/presentation/bindings/attendance_status_binding.dart'; // Import AttendanceStatusBinding
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/bindings/qr_scanner_binding.dart'; // Import QrScannerBinding
+import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'; // Import AttendanceService
+import 'package:demo_qr_scanner/core/network/network_controller.dart'; // Import NetworkController
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
   Get.put<AppDatabase>(AppDatabase()); // Register AppDatabase as a singleton
+  Get.put<AttendanceService>(AttendanceService(Get.find<AppDatabase>())); // Register AttendanceService
+  Get.put<NetworkController>(NetworkController(Get.find<AttendanceService>())); // Register NetworkController
   await initializeDateFormatting(
     'ja',
     null,
