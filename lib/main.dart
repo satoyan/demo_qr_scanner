@@ -2,12 +2,11 @@ import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart'; // Import for initializeDateFormatting
 import 'package:demo_qr_scanner/core/theme/app_theme.dart'; // Import appTheme
-import 'package:demo_qr_scanner/core/database/app_database.dart';
 import 'package:get/get.dart'; // Import GetX
-import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'; // Import AttendanceService
-import 'package:demo_qr_scanner/core/network/network_controller.dart'; // Import NetworkController
+
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages
+import 'package:demo_qr_scanner/bindings/app_bindings.dart'; // Import AppBindings
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
@@ -31,17 +30,7 @@ class MyApp extends StatelessWidget {
       theme: appTheme, // Use appTheme
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      initialBinding: BindingsBuilder(() {
-        Get.put<AppDatabase>(
-          AppDatabase(),
-        ); // Register AppDatabase as a singleton
-        Get.put<AttendanceService>(
-          AttendanceService(Get.find<AppDatabase>()),
-        ); // Register AttendanceService
-        Get.put<NetworkController>(
-          NetworkController(Get.find<AttendanceService>()),
-        ); // Register NetworkController
-      }),
+      initialBinding: AppBindings(),
     );
   }
 }
