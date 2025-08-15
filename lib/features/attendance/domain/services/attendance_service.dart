@@ -15,13 +15,14 @@ class AttendanceService {
   }
 
   Future<List<AttendanceRecord>> getUnsyncedAttendanceRecords() {
-    return (_db.select(_db.attendanceRecords)
-          ..where((tbl) => tbl.isSynced.equals(false)))
-        .get();
+    return (_db.select(
+      _db.attendanceRecords,
+    )..where((tbl) => tbl.isSynced.equals(false))).get();
   }
 
   Future<void> markAsSynced(AttendanceRecord record) async {
-    await (_db.update(_db.attendanceRecords)..where((tbl) => tbl.id.equals(record.id)))
+    await (_db.update(_db.attendanceRecords)
+          ..where((tbl) => tbl.id.equals(record.id)))
         .write(AttendanceRecordsCompanion(isSynced: Value(true)));
   }
 }

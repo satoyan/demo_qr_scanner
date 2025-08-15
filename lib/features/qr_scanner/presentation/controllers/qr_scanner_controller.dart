@@ -1,21 +1,19 @@
 import 'dart:async';
 import 'dart:convert'; // Import for jsonDecode
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart'; // Import Employee model
 import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages for route names
-import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 class QrScannerController extends GetxController {
   late MobileScannerController scannerController;
   var isScanning = true.obs;
-  late LocalizationService _localizationService;
 
   @override
   void onInit() {
     super.onInit();
-    _localizationService = Get.find<LocalizationService>();
     scannerController = MobileScannerController(facing: CameraFacing.front);
     _initScanner();
   }
@@ -53,8 +51,8 @@ class QrScannerController extends GetxController {
       appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
       Get.snackbar(
-        _localizationService.snackbarErrorTitle,
-        _localizationService.snackbarInvalidQrCodeFormat,
+        Get.context!.l10n.snackbarErrorTitle,
+        Get.context!.l10n.snackbarInvalidQrCodeFormat,
       );
       // Optionally, navigate to a different screen or restart scanning
     }

@@ -1,28 +1,29 @@
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
-import 'package:demo_qr_scanner/core/services/localization_service.dart'; // Import LocalizationService
 
 class NetworkController extends GetxController {
   final AttendanceService _attendanceService;
   var isConnected = false.obs;
-  late LocalizationService _localizationService;
 
   NetworkController(this._attendanceService);
 
   @override
   void onInit() {
     super.onInit();
-    _localizationService = Get.find<LocalizationService>();
     _checkConnectivity();
-    Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> results) {
+    Connectivity().onConnectivityChanged.listen((
+      List<ConnectivityResult> results,
+    ) {
       _updateConnectivityStatus(results);
     });
   }
 
   Future<void> _checkConnectivity() async {
-    final List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+    final List<ConnectivityResult> result = await Connectivity()
+        .checkConnectivity();
     _updateConnectivityStatus(result);
   }
 
@@ -49,7 +50,7 @@ class NetworkController extends GetxController {
 
     appLogger.d('Attempting to sync ${unsyncedRecords.length} records...');
 
-    for (var record in unsyncedRecords) {
+    for (final record in unsyncedRecords) {
       // Mock API call
       await Future.delayed(
         const Duration(seconds: 1),
@@ -60,6 +61,10 @@ class NetworkController extends GetxController {
       await _attendanceService.markAsSynced(record);
       appLogger.d('Record ${record.id} synced successfully.');
     }
-    Get.snackbar(_localizationService.snackbarSyncComplete, _localizationService.snackbarAllPendingRecordsSynced);
+
+    Get.snackbar(
+      Get.context!.l10n.snackbarSyncComplete,
+      Get.context!.l10n.snackbarAllPendingRecordsSynced,
+    );
   }
 }
