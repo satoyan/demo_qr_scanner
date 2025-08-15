@@ -4,6 +4,7 @@ import 'package:get/get.dart'; // Import GetX
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart'; // Import controller
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
+import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_status.dart'; // Import AttendanceStatus
 
 class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
   const AttendanceStatusScreen({super.key, required this.qrCodeValue});
