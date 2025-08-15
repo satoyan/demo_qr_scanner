@@ -1,4 +1,4 @@
-.PHONY: all run build clean get analyze test lint format
+.PHONY: all run build clean get analyze test lint format build_runner_watch build_runner_build l10n copy-db
 
 all: run
 
@@ -32,3 +32,19 @@ lint: analyze
 format:
 	@echo "Formatting Flutter code..."
 	flutter format .
+
+build_runner_watch:
+	@echo "Running Flutter build_runner in watch mode..."
+	flutter packages pub run build_runner watch --delete-conflicting-outputs
+
+build_runner_build:
+	@echo "Running Flutter build_runner to build..."
+	flutter packages pub run build_runner build --delete-conflicting-outputs
+
+l10n:
+	@echo "Generating localization files..."
+	flutter gen-l10n
+
+copy-db:
+	@echo "Copying database from device..."
+	adb shell 'run-as com.example.demo_qr_scanner cat /data/data/com.example.demo_qr_scanner/app_flutter/db.sqlite' > db.sqlite
