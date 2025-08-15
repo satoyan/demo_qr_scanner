@@ -3,6 +3,7 @@ import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import 
 import 'package:get/get.dart'; // Import GetX
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart'; // Import controller
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
+import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
 
 class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
   const AttendanceStatusScreen({super.key, required this.qrCodeValue});
@@ -14,7 +15,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color, // Set background color
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.s)),
         padding: EdgeInsets.zero, // Remove default padding
       ),
       child: Center(
@@ -36,7 +37,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(AppSpacing.s),
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -57,13 +58,13 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
             '${context.l10n.qrCodeLabel} $qrCodeValue',
             style: context.theme.textTheme.bodyLarge,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.m),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              padding: const EdgeInsets.all(10),
+              crossAxisSpacing: AppSpacing.s,
+              mainAxisSpacing: AppSpacing.s,
+              padding: const EdgeInsets.all(AppSpacing.s),
               children: [
                 _buildSquareButton(
                   context,
