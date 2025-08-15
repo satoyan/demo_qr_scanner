@@ -10,6 +10,7 @@ import 'package:demo_qr_scanner/features/attendance/presentation/bindings/attend
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/bindings/qr_scanner_binding.dart'; // Import QrScannerBinding
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'; // Import AttendanceService
 import 'package:demo_qr_scanner/core/network/network_controller.dart'; // Import NetworkController
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter binding is initialized
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
           binding: AttendanceStatusBinding(),
         ),
       ],
-      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+      onGenerateTitle: (context) => context.l10n.appTitle,
       theme: appTheme, // Use appTheme
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

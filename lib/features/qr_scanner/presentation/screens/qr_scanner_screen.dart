@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:get/get.dart'; // Import GetX
-import 'package:demo_qr_scanner/l10n/app_localizations.dart'; // Import for AppLocalizations
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_scanner_controller.dart'; // Import QrScannerController
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 
 class QrScannerScreen extends GetView<QrScannerController> {
   const QrScannerScreen({super.key});
@@ -12,7 +12,7 @@ class QrScannerScreen extends GetView<QrScannerController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.qrScannerScreenTitle,
+          context.l10n.qrScannerScreenTitle,
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
@@ -26,12 +26,12 @@ class QrScannerScreen extends GetView<QrScannerController> {
             child: Center(
               child: Obx(() => controller.isScanning.value
                   ? Text(
-                      AppLocalizations.of(context)!.scanQrCodeInstruction,
+                      context.l10n.scanQrCodeInstruction,
                       style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )
                   : Text(
-                      AppLocalizations.of(context)!.qrCodeDetected,
+                      context.l10n.qrCodeDetected,
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
             ),
