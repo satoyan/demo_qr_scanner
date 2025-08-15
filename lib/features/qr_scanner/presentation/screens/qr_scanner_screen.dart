@@ -1,103 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
+import 'package:get/get.dart'; // Import GetX
+import 'package:demo_qr_scanner/l10n/app_localizations.dart'; // Import for AppLocalizations
+import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_scanner_controller.dart'; // Import QrScannerController
 
-class QrScannerScreen extends StatefulWidget {
+class QrScannerScreen extends GetView<QrScannerController> {
   const QrScannerScreen({super.key});
-
-  @override
-  State<QrScannerScreen> createState() => _QrScannerScreenState();
-}
-
-class _QrScannerScreenState extends State<QrScannerScreen> {
-  late MobileScannerController _scannerController;
-  bool _isScanning = true; // Controls the UI text
-
-  Future<void> _onBarcodeDetected(BarcodeCapture capture) async {
-    debugPrint('Detected barcode: ${capture.barcodes.first.rawValue}');
-    final List<Barcode> barcodes = capture.barcodes;
-    if (barcodes.isNotEmpty && _isScanning) {
-      setState(() {
-        _isScanning = false; // Update UI to show detected state
-      });
-      await _handleQrCode(barcodes.first.rawValue);
-    }
-  }
-
-  Future<void> _handleQrCode(String? qrCodeValue) async {
-    if (qrCodeValue == null) {
-      return;
-    }
-
-    // Stop scanning to prevent multiple detections and navigations
-    await _scannerController.stop();
-
-    if (!context.mounted) {
-      return;
-    }
-
-    // ignore: use_build_context_synchronously
-    await context.push('/details', extra: qrCodeValue);
-    // After returning from details screen, restart scanner and reset UI
-    setState(() {
-      _isScanning = true;
-    });
-    await _scannerController.start();
-  }
-
-  Future<void> _initController() async {
-    _scannerController = MobileScannerController(facing: CameraFacing.front);
-    await _scannerController.start(); // Start the scanner initially
-    _scannerController.barcodes.listen(_onBarcodeDetected);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initController();
-  }
-
-  @override
-  void dispose() {
-    _scannerController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    _scannerController.dispose();
-    _initController();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          context.l10n.qrScannerScreenTitle,
-          style: context.textTheme.titleLarge,
+          AppLocalizations.of(context)!.qrScannerScreenTitle,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: Column(
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height / 2,
-            child: MobileScanner(controller: _scannerController),
+            child: MobileScanner(controller: controller.scannerController),
           ),
           Expanded(
             child: Center(
-              child: _isScanning
+              child: Obx(() => controller.isScanning.value
                   ? Text(
-                      context.l10n.scanQrCodeInstruction,
-                      style: context.textTheme.headlineMedium,
+                      AppLocalizations.of(context)!.scanQrCodeInstruction,
+                      style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     )
                   : Text(
-                      context.l10n.qrCodeDetected,
-                      style: context.textTheme.bodyLarge,
-                    ),
+                      AppLocalizations.of(context)!.qrCodeDetected,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
             ),
           ),
         ],

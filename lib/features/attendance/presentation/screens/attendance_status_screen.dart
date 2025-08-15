@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart'; // Import Flutter Material Design widgets
 import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
-import 'package:go_router/go_router.dart'; // Import for context.pop
 import 'package:get/get.dart'; // Import GetX
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart'; // Import controller
 import 'package:demo_qr_scanner/l10n/app_localizations.dart'; // Import for AppLocalizations
@@ -10,11 +9,9 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
 
   final String qrCodeValue;
 
-  Widget _buildSquareButton(BuildContext context, String text, Color color) {
+  Widget _buildSquareButton(BuildContext context, String text, Color color, VoidCallback onPressed) {
     return ElevatedButton(
-      onPressed: () {
-        context.pop(); // Navigate back to the previous screen
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color, // Set background color
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -72,21 +69,25 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
                   context,
                   AppLocalizations.of(context)!.buttonShukkin,
                   Colors.blue,
+                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.clockIn),
                 ),
                 _buildSquareButton(
                   context,
                   AppLocalizations.of(context)!.buttonTaikin,
                   Colors.red,
+                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.clockOut),
                 ),
                 _buildSquareButton(
                   context,
                   AppLocalizations.of(context)!.buttonKyukeiKaishi,
                   Colors.green,
+                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.startBreak),
                 ),
                 _buildSquareButton(
                   context,
                   AppLocalizations.of(context)!.buttonKyukeiOwari,
                   Colors.orange,
+                  () => controller.recordAttendance(qrCodeValue, "Employee Name", AttendanceStatus.endBreak),
                 ),
               ],
             ),

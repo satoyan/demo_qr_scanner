@@ -1,9 +1,22 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
+import 'package:demo_qr_scanner/core/database/app_database.dart'; // For AttendanceRecordsCompanion
+import 'package:drift/drift.dart' as drift; // Alias drift for Value
+
+enum AttendanceStatus {
+  clockIn,
+  clockOut,
+  startBreak,
+  endBreak,
+}
 
 class AttendanceStatusController extends GetxController {
+  final AttendanceService _attendanceService;
   final _currentTime = DateTime.now().obs;
   late Timer _timer;
+
+  AttendanceStatusController(this._attendanceService);
 
   DateTime get currentTime => _currentTime.value;
 
@@ -19,5 +32,17 @@ class AttendanceStatusController extends GetxController {
   void onClose() {
     _timer.cancel();
     super.onClose();
+  }
+
+  Future<void> recordAttendance(String employeeId, String employeeName, AttendanceStatus status) async {
+    final newRecord = AttendanceRecordsCompanion(
+      employeeId: drift.Value(employeeId),
+      employeeName: drift.Value(employeeName),
+      timestamp: drift.Value(DateTime.now()),
+      status: drift.Value(status.toString().split('.').last), // Convert enum to string
+      isSynced: drift.Value(false),
+    );
+    await _attendanceService.saveAttendanceRecord(newRecord);
+    Get.snackbar('Success', 'Attendance recorded: ${status.name}');
   }
 }
