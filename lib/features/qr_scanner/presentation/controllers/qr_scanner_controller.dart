@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert'; // Import for jsonDecode
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
+import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
@@ -10,6 +11,9 @@ import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages for r
 class QrScannerController extends GetxController {
   late MobileScannerController scannerController;
   var isScanning = true.obs;
+  final NavigationService _navigationService;
+
+  QrScannerController(this._navigationService);
 
   @override
   void onInit() {
@@ -46,7 +50,7 @@ class QrScannerController extends GetxController {
       final Map<String, dynamic> jsonMap = jsonDecode(qrCodeValue);
       final Employee employee = Employee.fromJson(jsonMap);
       appLogger.d('Parsed Employee: ${employee.id}, ${employee.name}');
-      Get.toNamed(Routes.attendanceStatus, arguments: employee);
+      _navigationService.toNamed(Routes.attendanceStatus, arguments: employee);
     } catch (e) {
       appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
@@ -60,6 +64,10 @@ class QrScannerController extends GetxController {
     // After returning from details screen, restart scanner and reset UI
     isScanning.value = true;
     await scannerController.start();
+  }
+
+  void navigateToManualEntry() {
+    _navigationService.toNamed(Routes.manualEntry);
   }
 
   @override

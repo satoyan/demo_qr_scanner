@@ -1,3 +1,4 @@
+import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
@@ -12,7 +13,10 @@ class AttendanceStatusBinding extends Bindings {
       () => AttendanceService(Get.find<AppDatabase>()), // Get the database instance from GetX
     );
     Get.lazyPut<AttendanceStatusController>(
-      () => AttendanceStatusController(Get.find<AttendanceService>()),
+      () => AttendanceStatusController(
+        Get.find<AttendanceService>(),
+        Get.find<NavigationService>(),
+      ),
     );
   }
 }

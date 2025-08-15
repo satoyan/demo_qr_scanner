@@ -4,7 +4,6 @@ import 'package:get/get.dart'; // Import GetX
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_scanner_controller.dart'; // Import QrScannerController
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import BuildContextExtension
 import 'package:demo_qr_scanner/core/constants/app_constants.dart'; // Import AppConstants
-import 'package:demo_qr_scanner/routes/app_pages.dart'; // Import AppPages for Routes
 
 class QrScannerScreen extends GetView<QrScannerController> {
   const QrScannerScreen({super.key});
@@ -26,24 +25,26 @@ class QrScannerScreen extends GetView<QrScannerController> {
           ),
           Expanded(
             child: Center(
-              child: Obx(() => controller.isScanning.value
-                  ? Text(
-                      context.l10n.scanQrCodeInstruction,
-                      style: context.theme.textTheme.headlineMedium,
-                      textAlign: TextAlign.center,
-                    )
-                  : Text(
-                      context.l10n.qrCodeDetected,
-                      style: context.theme.textTheme.bodyLarge,
-                    )),
+              child: Obx(
+                () => controller.isScanning.value
+                    ? Text(
+                        context.l10n.scanQrCodeInstruction,
+                        style: context.theme.textTheme.headlineMedium,
+                        textAlign: TextAlign.center,
+                      )
+                    : Text(
+                        context.l10n.qrCodeDetected,
+                        style: context.theme.textTheme.bodyLarge,
+                      ),
               ),
             ),
+          ),
           Padding(
             padding: const EdgeInsets.all(AppSpacing.m),
             child: ElevatedButton(
               onPressed: () {
                 // Navigate to manual entry screen
-                Get.toNamed(Routes.manualEntry);
+                controller.navigateToManualEntry();
               },
               child: Text(context.l10n.noQrCodeOption),
             ),

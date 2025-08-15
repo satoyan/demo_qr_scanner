@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
+import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // For AttendanceRecordsCompanion
@@ -8,10 +9,11 @@ import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_stat
 
 class AttendanceStatusController extends GetxController {
   final AttendanceService _attendanceService;
+  final NavigationService _navigationService;
   final _currentTime = DateTime.now().obs;
   late Timer _timer;
 
-  AttendanceStatusController(this._attendanceService);
+  AttendanceStatusController(this._attendanceService, this._navigationService);
 
   DateTime get currentTime => _currentTime.value;
 
@@ -44,7 +46,7 @@ class AttendanceStatusController extends GetxController {
       isSynced: drift.Value(false),
     );
     await _attendanceService.saveAttendanceRecord(newRecord);
-    Get.back();
+    _navigationService.back();
     Get.snackbar(
       Get.context!.l10n.snackbarSuccessTitle,
       '${Get.context!.l10n.snackbarAttendanceRecorded}: ${status.name}',
