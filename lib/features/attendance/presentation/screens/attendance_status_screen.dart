@@ -1,38 +1,14 @@
-import 'package:flutter/material.dart';
-import 'dart:async'; // Import for Timer
+import 'package:flutter/material.dart'; // Import Flutter Material Design widgets
 import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
 import 'package:go_router/go_router.dart'; // Import for context.pop
-import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart'; // Import for textTheme and l10n extension
+import 'package:get/get.dart'; // Import GetX
+import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart'; // Import controller
+import 'package:demo_qr_scanner/l10n/app_localizations.dart'; // Import for AppLocalizations
 
-class AttendanceStatusScreen extends StatefulWidget {
+class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
   const AttendanceStatusScreen({super.key, required this.qrCodeValue});
 
   final String qrCodeValue;
-
-  @override
-  State<AttendanceStatusScreen> createState() => _AttendanceStatusScreenState();
-}
-
-class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
-  late DateTime _currentTime;
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentTime = DateTime.now();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _currentTime = DateTime.now();
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
 
   Widget _buildSquareButton(BuildContext context, String text, Color color) {
     return ElevatedButton(
@@ -48,7 +24,7 @@ class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: context.textTheme.labelLarge, // Use theme style
+          style: Theme.of(context).textTheme.labelLarge, // Use theme style
         ),
       ),
     );
@@ -58,7 +34,7 @@ class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.detailsScreenTitle),
+        title: Text(AppLocalizations.of(context)!.detailsScreenTitle),
       ),
       body: Column(
         children: [
@@ -68,21 +44,21 @@ class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    DateTimeFormatter.formatDate(_currentTime),
-                    style: context.textTheme.headlineMedium, // Use theme style
-                  ),
-                  Text(
-                    DateTimeFormatter.formatTime(_currentTime),
-                    style: context.textTheme.headlineMedium, // Use theme style
-                  ),
+                  Obx(() => Text(
+                    DateTimeFormatter.formatDate(controller.currentTime),
+                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                  )),
+                  Obx(() => Text(
+                    DateTimeFormatter.formatTime(controller.currentTime),
+                    style: Theme.of(context).textTheme.headlineMedium, // Use theme style
+                  )),
                 ],
               ),
             ),
           ),
           Text(
-            '${context.l10n.qrCodeLabel} ${widget.qrCodeValue}',
-            style: context.textTheme.bodyLarge,
+            '${AppLocalizations.of(context)!.qrCodeLabel} $qrCodeValue',
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 20),
           Expanded(
@@ -94,22 +70,22 @@ class _AttendanceStatusScreenState extends State<AttendanceStatusScreen> {
               children: [
                 _buildSquareButton(
                   context,
-                  context.l10n.buttonShukkin,
+                  AppLocalizations.of(context)!.buttonShukkin,
                   Colors.blue,
                 ),
                 _buildSquareButton(
                   context,
-                  context.l10n.buttonTaikin,
+                  AppLocalizations.of(context)!.buttonTaikin,
                   Colors.red,
                 ),
                 _buildSquareButton(
                   context,
-                  context.l10n.buttonKyukeiKaishi,
+                  AppLocalizations.of(context)!.buttonKyukeiKaishi,
                   Colors.green,
                 ),
                 _buildSquareButton(
                   context,
-                  context.l10n.buttonKyukeiOwari,
+                  AppLocalizations.of(context)!.buttonKyukeiOwari,
                   Colors.orange,
                 ),
               ],
