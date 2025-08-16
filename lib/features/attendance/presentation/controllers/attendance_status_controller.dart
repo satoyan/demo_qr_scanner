@@ -52,7 +52,7 @@ class AttendanceStatusController extends GetxController {
     _navigationService.back();
     _snackbarService.showSnackbar(
       _localizationService.snackbarSuccessTitle,
-      '${_localizationService.snackbarAttendanceRecorded}: ${status.name}',
+      _localizationService.snackbarAttendanceRecordedWithStatus(status.name),
     );
   }
 }

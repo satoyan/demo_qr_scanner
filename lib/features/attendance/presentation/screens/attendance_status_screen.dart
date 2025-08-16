@@ -1,3 +1,4 @@
+import 'package:demo_qr_scanner/core/widgets/base_screen.dart';
 import 'package:flutter/material.dart'; // Import Flutter Material Design widgets
 import 'package:demo_qr_scanner/core/utils/date_time_formatter.dart'; // Import for DateTimeFormatter
 import 'package:get/get.dart'; // Import GetX
@@ -12,12 +13,18 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
 
   final Employee employee;
 
-  Widget _buildSquareButton(BuildContext context, String text, Color color, VoidCallback onPressed) {
+  Widget _buildSquareButton(
+    BuildContext context, {
+    required String text,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color, // Set background color
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.s)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppRadius.s)),
         padding: EdgeInsets.zero, // Remove default padding
       ),
       child: Center(
@@ -30,9 +37,55 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
     );
   }
 
+  Widget _buildAttendanceButtons(BuildContext context) {
+    final buttonData = [
+      {
+        'text': context.l10n.buttonShukkin,
+        'color': Colors.blue,
+        'status': AttendanceStatus.clockIn,
+      },
+      {
+        'text': context.l10n.buttonTaikin,
+        'color': Colors.red,
+        'status': AttendanceStatus.clockOut,
+      },
+      {
+        'text': context.l10n.buttonKyukeiKaishi,
+        'color': Colors.green,
+        'status': AttendanceStatus.startBreak,
+      },
+      {
+        'text': context.l10n.buttonKyukeiOwari,
+        'color': Colors.orange,
+        'status': AttendanceStatus.endBreak,
+      },
+    ];
+
+    return Expanded(
+      child: GridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: AppSpacing.s,
+        mainAxisSpacing: AppSpacing.s,
+        padding: const EdgeInsets.all(AppSpacing.s),
+        children: buttonData.map((data) {
+          return _buildSquareButton(
+            context,
+            text: data['text'] as String,
+            color: data['color'] as Color,
+            onPressed: () => controller.recordAttendance(
+              employee.id,
+              employee.name,
+              data['status'] as AttendanceStatus,
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScreen(
       appBar: AppBar(
         title: Text(context.l10n.detailsScreenTitle),
       ),
@@ -45,13 +98,15 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Obx(() => Text(
-                    DateTimeFormatter.formatDate(controller.currentTime),
-                    style: context.theme.textTheme.headlineMedium, // Use theme style
-                  )),
+                        DateTimeFormatter.formatDate(controller.currentTime),
+                        style:
+                            context.theme.textTheme.headlineMedium, // Use theme style
+                      )),
                   Obx(() => Text(
-                    DateTimeFormatter.formatTime(controller.currentTime),
-                    style: context.theme.textTheme.headlineMedium, // Use theme style
-                  )),
+                        DateTimeFormatter.formatTime(controller.currentTime),
+                        style:
+                            context.theme.textTheme.headlineMedium, // Use theme style
+                      )),
                 ],
               ),
             ),
@@ -74,40 +129,7 @@ class AttendanceStatusScreen extends GetView<AttendanceStatusController> {
             ),
           ),
           const SizedBox(height: AppSpacing.m),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: AppSpacing.s,
-              mainAxisSpacing: AppSpacing.s,
-              padding: const EdgeInsets.all(AppSpacing.s),
-              children: [
-                _buildSquareButton(
-                  context,
-                  context.l10n.buttonShukkin,
-                  Colors.blue,
-                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.clockIn),
-                ),
-                _buildSquareButton(
-                  context,
-                  context.l10n.buttonTaikin,
-                  Colors.red,
-                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.clockOut),
-                ),
-                _buildSquareButton(
-                  context,
-                  context.l10n.buttonKyukeiKaishi,
-                  Colors.green,
-                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.startBreak),
-                ),
-                _buildSquareButton(
-                  context,
-                  context.l10n.buttonKyukeiOwari,
-                  Colors.orange,
-                  () => controller.recordAttendance(employee.id, employee.name, AttendanceStatus.endBreak),
-                ),
-              ],
-            ),
-          ),
+          _buildAttendanceButtons(context),
         ],
       ),
     );

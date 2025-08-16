@@ -66,6 +66,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get snackbarAttendanceRecorded => 'Attendance recorded';
 
   @override
+  String snackbarAttendanceRecordedWithStatus(Object status) {
+    return 'Attendance recorded: $status';
+  }
+
+  @override
   String get snackbarErrorTitle => 'Error';
 
   @override

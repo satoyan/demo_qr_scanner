@@ -4,16 +4,10 @@ import 'package:demo_qr_scanner/core/services/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
-import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart';
 
 class AttendanceStatusBinding extends Bindings {
   @override
   void dependencies() {
-    // Register AppDatabase globally if not already done, or pass it
-    // Assuming 'database' is already a global instance from main.dart
-    Get.lazyPut<AttendanceService>(
-      () => AttendanceService(Get.find<AttendanceRepository>()),
-    );
     Get.lazyPut<AttendanceStatusController>(
       () => AttendanceStatusController(
         Get.find<AttendanceService>(),

@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:demo_qr_scanner/core/services/error_handling_service.dart';
 import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart';
 import 'package:demo_qr_scanner/core/services/getx_snackbar_service.dart';
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
@@ -23,11 +24,16 @@ class AppBindings extends Bindings {
     );
     Get.lazyPut<AttendanceService>(
       () => AttendanceService(Get.find<AttendanceRepository>()),
+      fenix: true,
     );
     Get.lazyPut<Connectivity>(() => Connectivity(), fenix: true);
     Get.lazyPut<SnackbarService>(() => GetxSnackbarService(), fenix: true);
     Get.lazyPut<LocalizationService>(
       () => GetxLocalizationService(),
+      fenix: true,
+    );
+    Get.lazyPut<ErrorHandlingService>(
+      () => GetxErrorHandlingService(Get.find<SnackbarService>()),
       fenix: true,
     );
     Get.lazyPut<NetworkController>(

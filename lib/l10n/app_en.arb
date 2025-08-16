@@ -19,6 +19,7 @@
   "nameEmptyError": "Name cannot be empty",
   "snackbarSuccessTitle": "Success",
   "snackbarAttendanceRecorded": "Attendance recorded",
+  "snackbarAttendanceRecordedWithStatus": "Attendance recorded: {status}",
   "snackbarErrorTitle": "Error",
   "snackbarInvalidQrCodeFormat": "Invalid QR code format. Please scan a valid employee QR code.",
   "snackbarSyncComplete": "Sync Complete",

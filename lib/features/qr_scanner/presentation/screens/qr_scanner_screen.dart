@@ -1,3 +1,4 @@
+import 'package:demo_qr_scanner/core/widgets/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:get/get.dart'; // Import GetX
@@ -10,7 +11,7 @@ class QrScannerScreen extends GetView<QrScannerController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScreen(
       appBar: AppBar(
         title: Text(
           context.l10n.qrScannerScreenTitle,

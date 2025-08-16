@@ -212,6 +212,12 @@ abstract class AppLocalizations {
   /// **'Attendance recorded'**
   String get snackbarAttendanceRecorded;
 
+  /// No description provided for @snackbarAttendanceRecordedWithStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance recorded: {status}'**
+  String snackbarAttendanceRecordedWithStatus(Object status);
+
   /// No description provided for @snackbarErrorTitle.
   ///
   /// In en, this message translates to:

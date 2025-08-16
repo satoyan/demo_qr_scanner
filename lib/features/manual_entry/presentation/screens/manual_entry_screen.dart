@@ -1,3 +1,4 @@
+import 'package:demo_qr_scanner/core/widgets/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import for FilteringTextInputFormatter
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class ManualEntryScreen extends GetView<ManualEntryController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScreen(
       appBar: AppBar(title: Text(context.l10n.noQrCodeOption)),
       body: Padding(
         padding: const EdgeInsets.all(AppSpacing.m),

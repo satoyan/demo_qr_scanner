@@ -19,6 +19,7 @@
   "nameEmptyError": "氏名は必須です",
   "snackbarSuccessTitle": "成功",
   "snackbarAttendanceRecorded": "勤怠を記録しました",
+  "snackbarAttendanceRecordedWithStatus": "勤怠を記録しました: {status}",
   "snackbarErrorTitle": "エラー",
   "snackbarInvalidQrCodeFormat": "無効なQRコード形式です。有効な従業員QRコードをスキャンしてください。",
   "snackbarSyncComplete": "同期完了",

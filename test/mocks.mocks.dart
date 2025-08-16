@@ -10,16 +10,18 @@ import 'package:connectivity_plus/connectivity_plus.dart' as _i12;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
     as _i13;
 import 'package:demo_qr_scanner/core/database/app_database.dart' as _i11;
+import 'package:demo_qr_scanner/core/services/error_handling_service.dart'
+    as _i20;
 import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart'
     as _i8;
 import 'package:demo_qr_scanner/core/services/localization_service.dart'
-    as _i20;
+    as _i21;
 import 'package:demo_qr_scanner/core/services/snackbar_service.dart' as _i19;
 import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart'
-    as _i22;
+    as _i23;
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'
     as _i10;
-import 'package:demo_qr_scanner/l10n/app_localizations.dart' as _i21;
+import 'package:demo_qr_scanner/l10n/app_localizations.dart' as _i22;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/src/widgets/framework.dart' as _i4;
 import 'package:flutter/widgets.dart' as _i2;
@@ -765,11 +767,31 @@ class MockSnackbarService extends _i1.Mock implements _i19.SnackbarService {
       );
 }
 
+/// A class which mocks [ErrorHandlingService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockErrorHandlingService extends _i1.Mock
+    implements _i20.ErrorHandlingService {
+  @override
+  void handleError(
+    dynamic error, {
+    String? message,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #handleError,
+          [error],
+          {#message: message},
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
 /// A class which mocks [LocalizationService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLocalizationService extends _i1.Mock
-    implements _i20.LocalizationService {
+    implements _i21.LocalizationService {
   @override
   String get snackbarSuccessTitle => (super.noSuchMethod(
         Invocation.getter(#snackbarSuccessTitle),
@@ -821,12 +843,35 @@ class MockLocalizationService extends _i1.Mock
           Invocation.getter(#snackbarInvalidQrCodeFormat),
         ),
       ) as String);
+
+  @override
+  String snackbarAttendanceRecordedWithStatus(String? status) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #snackbarAttendanceRecordedWithStatus,
+          [status],
+        ),
+        returnValue: _i7.dummyValue<String>(
+          this,
+          Invocation.method(
+            #snackbarAttendanceRecordedWithStatus,
+            [status],
+          ),
+        ),
+        returnValueForMissingStub: _i7.dummyValue<String>(
+          this,
+          Invocation.method(
+            #snackbarAttendanceRecordedWithStatus,
+            [status],
+          ),
+        ),
+      ) as String);
 }
 
 /// A class which mocks [AppLocalizations].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAppLocalizations extends _i1.Mock implements _i21.AppLocalizations {
+class MockAppLocalizations extends _i1.Mock implements _i22.AppLocalizations {
   @override
   String get localeName => (super.noSuchMethod(
         Invocation.getter(#localeName),
@@ -1138,13 +1183,36 @@ class MockAppLocalizations extends _i1.Mock implements _i21.AppLocalizations {
           Invocation.getter(#snackbarAllPendingRecordsSynced),
         ),
       ) as String);
+
+  @override
+  String snackbarAttendanceRecordedWithStatus(Object? status) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #snackbarAttendanceRecordedWithStatus,
+          [status],
+        ),
+        returnValue: _i7.dummyValue<String>(
+          this,
+          Invocation.method(
+            #snackbarAttendanceRecordedWithStatus,
+            [status],
+          ),
+        ),
+        returnValueForMissingStub: _i7.dummyValue<String>(
+          this,
+          Invocation.method(
+            #snackbarAttendanceRecordedWithStatus,
+            [status],
+          ),
+        ),
+      ) as String);
 }
 
 /// A class which mocks [AttendanceRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAttendanceRepository extends _i1.Mock
-    implements _i22.AttendanceRepository {
+    implements _i23.AttendanceRepository {
   @override
   _i9.Future<int> saveAttendanceRecord(
           _i11.AttendanceRecordsCompanion? entry) =>

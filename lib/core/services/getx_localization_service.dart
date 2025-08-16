@@ -10,6 +10,11 @@ class GetxLocalizationService implements LocalizationService {
   String get snackbarAttendanceRecorded => Get.context!.l10n.snackbarAttendanceRecorded;
 
   @override
+  String snackbarAttendanceRecordedWithStatus(String status) {
+    return Get.context!.l10n.snackbarAttendanceRecordedWithStatus(status);
+  }
+
+  @override
   String get snackbarErrorTitle => Get.context!.l10n.snackbarErrorTitle;
 
   @override

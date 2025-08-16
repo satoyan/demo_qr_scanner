@@ -66,6 +66,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get snackbarAttendanceRecorded => '勤怠を記録しました';
 
   @override
+  String snackbarAttendanceRecordedWithStatus(Object status) {
+    return '勤怠を記録しました: $status';
+  }
+
+  @override
   String get snackbarErrorTitle => 'エラー';
 
   @override

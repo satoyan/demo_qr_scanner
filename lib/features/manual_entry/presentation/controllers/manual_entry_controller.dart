@@ -1,4 +1,4 @@
-import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart';
+import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart';
@@ -9,7 +9,7 @@ class ManualEntryController extends GetxController {
   final TextEditingController idController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final GlobalKey<FormState> formKey = Get.find();
-  final router = Get.find<GetxNavigationService>();
+  final router = Get.find<NavigationService>();
 
   void confirmEntry() {
     if (formKey.currentState!.validate()) {

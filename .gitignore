@@ -46,3 +46,4 @@ app.*.map.json
 /android/kls_database.db
 
 GEMINI.md
+.gemini/

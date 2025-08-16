@@ -1,5 +1,5 @@
 import 'package:demo_qr_scanner/bindings/app_bindings.dart';
-import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart';
+import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:demo_qr_scanner/features/manual_entry/presentation/bindings/manual_entry_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -27,7 +27,7 @@ void main() {
     mockFormState = MockFormState();
     when(mockFormStateKey.currentState).thenReturn(mockFormState);
     mockGetxNavigationService = MockGetxNavigationService();
-    Get.replace<GetxNavigationService>(mockGetxNavigationService);
+    Get.replace<NavigationService>(mockGetxNavigationService);
     AppBindings().dependencies();
     ManualEntryBinding().dependencies();
     manualEntryController = ManualEntryController();
@@ -78,4 +78,3 @@ void main() {
     });
   });
 }
-
