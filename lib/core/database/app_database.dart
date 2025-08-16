@@ -23,25 +23,6 @@ class AppDatabase extends _$AppDatabase {
 
   @override
   int get schemaVersion => 1;
-
-  Future<int> saveAttendanceRecord(AttendanceRecordsCompanion entry) {
-    return into(attendanceRecords).insert(entry);
-  }
-
-  Future<List<AttendanceRecord>> getAllAttendanceRecords() {
-    return select(attendanceRecords).get();
-  }
-
-  Future<List<AttendanceRecord>> getUnsyncedAttendanceRecords() {
-    return (select(attendanceRecords)
-          ..where((tbl) => tbl.isSynced.equals(false)))
-        .get();
-  }
-
-  Future<void> markAsSynced(AttendanceRecord record) {
-    return (update(attendanceRecords)..where((tbl) => tbl.id.equals(record.id)))
-        .write(AttendanceRecordsCompanion(isSynced: Value(true)));
-  }
 }
 
 LazyDatabase _openConnection() {

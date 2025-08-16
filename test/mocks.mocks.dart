@@ -4,35 +4,33 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i9;
-import 'dart:ui' as _i10;
+import 'dart:ui' as _i6;
 
-import 'package:connectivity_plus/connectivity_plus.dart' as _i14;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i12;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
-    as _i15;
-import 'package:demo_qr_scanner/core/database/app_database.dart' as _i6;
-import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart'
-    as _i12;
-import 'package:demo_qr_scanner/core/services/localization_service.dart'
-    as _i22;
-import 'package:demo_qr_scanner/core/services/snackbar_service.dart' as _i21;
-import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart'
-    as _i24;
-import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'
     as _i13;
-import 'package:demo_qr_scanner/l10n/app_localizations.dart' as _i23;
-import 'package:drift/drift.dart' as _i7;
-import 'package:drift/src/runtime/executor/stream_queries.dart' as _i8;
+import 'package:demo_qr_scanner/core/database/app_database.dart' as _i11;
+import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart'
+    as _i8;
+import 'package:demo_qr_scanner/core/services/localization_service.dart'
+    as _i20;
+import 'package:demo_qr_scanner/core/services/snackbar_service.dart' as _i19;
+import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart'
+    as _i22;
+import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'
+    as _i10;
+import 'package:demo_qr_scanner/l10n/app_localizations.dart' as _i21;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/src/widgets/framework.dart' as _i4;
 import 'package:flutter/widgets.dart' as _i2;
-import 'package:mobile_scanner/src/enums/barcode_format.dart' as _i19;
-import 'package:mobile_scanner/src/enums/camera_facing.dart' as _i18;
-import 'package:mobile_scanner/src/enums/detection_speed.dart' as _i17;
-import 'package:mobile_scanner/src/mobile_scanner_controller.dart' as _i16;
-import 'package:mobile_scanner/src/objects/barcode_capture.dart' as _i20;
+import 'package:mobile_scanner/src/enums/barcode_format.dart' as _i17;
+import 'package:mobile_scanner/src/enums/camera_facing.dart' as _i16;
+import 'package:mobile_scanner/src/enums/detection_speed.dart' as _i15;
+import 'package:mobile_scanner/src/mobile_scanner_controller.dart' as _i14;
+import 'package:mobile_scanner/src/objects/barcode_capture.dart' as _i18;
 import 'package:mobile_scanner/src/objects/mobile_scanner_state.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i11;
+import 'package:mockito/src/dummies.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -106,200 +104,6 @@ class _FakeDiagnosticsNode_3 extends _i1.SmartFake
 class _FakeMobileScannerState_4 extends _i1.SmartFake
     implements _i5.MobileScannerState {
   _FakeMobileScannerState_4(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _Fake$AttendanceRecordsTable_5 extends _i1.SmartFake
-    implements _i6.$AttendanceRecordsTable {
-  _Fake$AttendanceRecordsTable_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeGeneratedDatabase_6 extends _i1.SmartFake
-    implements _i7.GeneratedDatabase {
-  _FakeGeneratedDatabase_6(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeDriftDatabaseOptions_7 extends _i1.SmartFake
-    implements _i7.DriftDatabaseOptions {
-  _FakeDriftDatabaseOptions_7(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeMigrationStrategy_8 extends _i1.SmartFake
-    implements _i7.MigrationStrategy {
-  _FakeMigrationStrategy_8(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeStreamQueryUpdateRules_9 extends _i1.SmartFake
-    implements _i7.StreamQueryUpdateRules {
-  _FakeStreamQueryUpdateRules_9(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeDatabaseConnection_10 extends _i1.SmartFake
-    implements _i7.DatabaseConnection {
-  _FakeDatabaseConnection_10(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeQueryExecutor_11 extends _i1.SmartFake implements _i7.QueryExecutor {
-  _FakeQueryExecutor_11(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeStreamQueryStore_12 extends _i1.SmartFake
-    implements _i8.StreamQueryStore {
-  _FakeStreamQueryStore_12(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeDatabaseConnectionUser_13 extends _i1.SmartFake
-    implements _i7.DatabaseConnectionUser {
-  _FakeDatabaseConnectionUser_13(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeMigrator_14 extends _i1.SmartFake implements _i7.Migrator {
-  _FakeMigrator_14(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeFuture_15<T1> extends _i1.SmartFake implements _i9.Future<T1> {
-  _FakeFuture_15(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeInsertStatement_16<T1 extends _i7.Table, D1> extends _i1.SmartFake
-    implements _i7.InsertStatement<T1, D1> {
-  _FakeInsertStatement_16(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeUpdateStatement_17<T extends _i7.Table, D> extends _i1.SmartFake
-    implements _i7.UpdateStatement<T, D> {
-  _FakeUpdateStatement_17(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeSimpleSelectStatement_18<T1 extends _i7.HasResultSet, D>
-    extends _i1.SmartFake implements _i7.SimpleSelectStatement<T1, D> {
-  _FakeSimpleSelectStatement_18(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeJoinedSelectStatement_19<FirstT extends _i7.HasResultSet, FirstD>
-    extends _i1.SmartFake implements _i7.JoinedSelectStatement<FirstT, FirstD> {
-  _FakeJoinedSelectStatement_19(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeDeleteStatement_20<T1 extends _i7.Table, D1> extends _i1.SmartFake
-    implements _i7.DeleteStatement<T1, D1> {
-  _FakeDeleteStatement_20(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeSelectable_21<T> extends _i1.SmartFake implements _i7.Selectable<T> {
-  _FakeSelectable_21(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeGenerationContext_22 extends _i1.SmartFake
-    implements _i7.GenerationContext {
-  _FakeGenerationContext_22(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -439,7 +243,7 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
       );
 
   @override
-  void setState(_i10.VoidCallback? fn) => super.noSuchMethod(
+  void setState(_i6.VoidCallback? fn) => super.noSuchMethod(
         Invocation.method(
           #setState,
           [fn],
@@ -503,14 +307,14 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
           #toStringShort,
           [],
         ),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
             [],
           ),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
@@ -562,7 +366,7 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetxNavigationService extends _i1.Mock
-    implements _i12.GetxNavigationService {
+    implements _i8.GetxNavigationService {
   @override
   _i9.Future<T?>? toNamed<T>(
     String? pageName, {
@@ -619,10 +423,10 @@ class MockGetxNavigationService extends _i1.Mock
 /// A class which mocks [AttendanceService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAttendanceService extends _i1.Mock implements _i13.AttendanceService {
+class MockAttendanceService extends _i1.Mock implements _i10.AttendanceService {
   @override
   _i9.Future<void> saveAttendanceRecord(
-          _i6.AttendanceRecordsCompanion? entry) =>
+          _i11.AttendanceRecordsCompanion? entry) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAttendanceRecord,
@@ -633,33 +437,35 @@ class MockAttendanceService extends _i1.Mock implements _i13.AttendanceService {
       ) as _i9.Future<void>);
 
   @override
-  _i9.Future<List<_i6.AttendanceRecord>> getAllAttendanceRecords() =>
+  _i9.Future<List<_i11.AttendanceRecord>> getAllAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllAttendanceRecords,
           [],
         ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
+        returnValue: _i9.Future<List<_i11.AttendanceRecord>>.value(
+            <_i11.AttendanceRecord>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i11.AttendanceRecord>>.value(
+                <_i11.AttendanceRecord>[]),
+      ) as _i9.Future<List<_i11.AttendanceRecord>>);
 
   @override
-  _i9.Future<List<_i6.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
+  _i9.Future<List<_i11.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUnsyncedAttendanceRecords,
           [],
         ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
+        returnValue: _i9.Future<List<_i11.AttendanceRecord>>.value(
+            <_i11.AttendanceRecord>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i11.AttendanceRecord>>.value(
+                <_i11.AttendanceRecord>[]),
+      ) as _i9.Future<List<_i11.AttendanceRecord>>);
 
   @override
-  _i9.Future<void> markAsSynced(_i6.AttendanceRecord? record) =>
+  _i9.Future<void> markAsSynced(_i11.AttendanceRecord? record) =>
       (super.noSuchMethod(
         Invocation.method(
           #markAsSynced,
@@ -673,36 +479,36 @@ class MockAttendanceService extends _i1.Mock implements _i13.AttendanceService {
 /// A class which mocks [Connectivity].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectivity extends _i1.Mock implements _i14.Connectivity {
+class MockConnectivity extends _i1.Mock implements _i12.Connectivity {
   @override
-  _i9.Stream<List<_i15.ConnectivityResult>> get onConnectivityChanged =>
+  _i9.Stream<List<_i13.ConnectivityResult>> get onConnectivityChanged =>
       (super.noSuchMethod(
         Invocation.getter(#onConnectivityChanged),
-        returnValue: _i9.Stream<List<_i15.ConnectivityResult>>.empty(),
+        returnValue: _i9.Stream<List<_i13.ConnectivityResult>>.empty(),
         returnValueForMissingStub:
-            _i9.Stream<List<_i15.ConnectivityResult>>.empty(),
-      ) as _i9.Stream<List<_i15.ConnectivityResult>>);
+            _i9.Stream<List<_i13.ConnectivityResult>>.empty(),
+      ) as _i9.Stream<List<_i13.ConnectivityResult>>);
 
   @override
-  _i9.Future<List<_i15.ConnectivityResult>> checkConnectivity() =>
+  _i9.Future<List<_i13.ConnectivityResult>> checkConnectivity() =>
       (super.noSuchMethod(
         Invocation.method(
           #checkConnectivity,
           [],
         ),
-        returnValue: _i9.Future<List<_i15.ConnectivityResult>>.value(
-            <_i15.ConnectivityResult>[]),
+        returnValue: _i9.Future<List<_i13.ConnectivityResult>>.value(
+            <_i13.ConnectivityResult>[]),
         returnValueForMissingStub:
-            _i9.Future<List<_i15.ConnectivityResult>>.value(
-                <_i15.ConnectivityResult>[]),
-      ) as _i9.Future<List<_i15.ConnectivityResult>>);
+            _i9.Future<List<_i13.ConnectivityResult>>.value(
+                <_i13.ConnectivityResult>[]),
+      ) as _i9.Future<List<_i13.ConnectivityResult>>);
 }
 
 /// A class which mocks [MobileScannerController].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockMobileScannerController extends _i1.Mock
-    implements _i16.MobileScannerController {
+    implements _i14.MobileScannerController {
   @override
   bool get autoStart => (super.noSuchMethod(
         Invocation.getter(#autoStart),
@@ -711,11 +517,11 @@ class MockMobileScannerController extends _i1.Mock
       ) as bool);
 
   @override
-  _i17.DetectionSpeed get detectionSpeed => (super.noSuchMethod(
+  _i15.DetectionSpeed get detectionSpeed => (super.noSuchMethod(
         Invocation.getter(#detectionSpeed),
-        returnValue: _i17.DetectionSpeed.noDuplicates,
-        returnValueForMissingStub: _i17.DetectionSpeed.noDuplicates,
-      ) as _i17.DetectionSpeed);
+        returnValue: _i15.DetectionSpeed.noDuplicates,
+        returnValueForMissingStub: _i15.DetectionSpeed.noDuplicates,
+      ) as _i15.DetectionSpeed);
 
   @override
   int get detectionTimeoutMs => (super.noSuchMethod(
@@ -725,18 +531,18 @@ class MockMobileScannerController extends _i1.Mock
       ) as int);
 
   @override
-  _i18.CameraFacing get facing => (super.noSuchMethod(
+  _i16.CameraFacing get facing => (super.noSuchMethod(
         Invocation.getter(#facing),
-        returnValue: _i18.CameraFacing.front,
-        returnValueForMissingStub: _i18.CameraFacing.front,
-      ) as _i18.CameraFacing);
+        returnValue: _i16.CameraFacing.front,
+        returnValueForMissingStub: _i16.CameraFacing.front,
+      ) as _i16.CameraFacing);
 
   @override
-  List<_i19.BarcodeFormat> get formats => (super.noSuchMethod(
+  List<_i17.BarcodeFormat> get formats => (super.noSuchMethod(
         Invocation.getter(#formats),
-        returnValue: <_i19.BarcodeFormat>[],
-        returnValueForMissingStub: <_i19.BarcodeFormat>[],
-      ) as List<_i19.BarcodeFormat>);
+        returnValue: <_i17.BarcodeFormat>[],
+        returnValueForMissingStub: <_i17.BarcodeFormat>[],
+      ) as List<_i17.BarcodeFormat>);
 
   @override
   bool get returnImage => (super.noSuchMethod(
@@ -760,11 +566,11 @@ class MockMobileScannerController extends _i1.Mock
       ) as bool);
 
   @override
-  _i9.Stream<_i20.BarcodeCapture> get barcodes => (super.noSuchMethod(
+  _i9.Stream<_i18.BarcodeCapture> get barcodes => (super.noSuchMethod(
         Invocation.getter(#barcodes),
-        returnValue: _i9.Stream<_i20.BarcodeCapture>.empty(),
-        returnValueForMissingStub: _i9.Stream<_i20.BarcodeCapture>.empty(),
-      ) as _i9.Stream<_i20.BarcodeCapture>);
+        returnValue: _i9.Stream<_i18.BarcodeCapture>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i18.BarcodeCapture>.empty(),
+      ) as _i9.Stream<_i18.BarcodeCapture>);
 
   @override
   _i5.MobileScannerState get value => (super.noSuchMethod(
@@ -796,15 +602,15 @@ class MockMobileScannerController extends _i1.Mock
       ) as bool);
 
   @override
-  _i9.Future<_i20.BarcodeCapture?> analyzeImage(String? path) =>
+  _i9.Future<_i18.BarcodeCapture?> analyzeImage(String? path) =>
       (super.noSuchMethod(
         Invocation.method(
           #analyzeImage,
           [path],
         ),
-        returnValue: _i9.Future<_i20.BarcodeCapture?>.value(),
-        returnValueForMissingStub: _i9.Future<_i20.BarcodeCapture?>.value(),
-      ) as _i9.Future<_i20.BarcodeCapture?>);
+        returnValue: _i9.Future<_i18.BarcodeCapture?>.value(),
+        returnValueForMissingStub: _i9.Future<_i18.BarcodeCapture?>.value(),
+      ) as _i9.Future<_i18.BarcodeCapture?>);
 
   @override
   _i4.Widget buildCameraView() => (super.noSuchMethod(
@@ -849,7 +655,7 @@ class MockMobileScannerController extends _i1.Mock
       ) as _i9.Future<void>);
 
   @override
-  _i9.Future<void> start({_i18.CameraFacing? cameraDirection}) =>
+  _i9.Future<void> start({_i16.CameraFacing? cameraDirection}) =>
       (super.noSuchMethod(
         Invocation.method(
           #start,
@@ -891,7 +697,7 @@ class MockMobileScannerController extends _i1.Mock
       ) as _i9.Future<void>);
 
   @override
-  _i9.Future<void> updateScanWindow(_i10.Rect? window) => (super.noSuchMethod(
+  _i9.Future<void> updateScanWindow(_i6.Rect? window) => (super.noSuchMethod(
         Invocation.method(
           #updateScanWindow,
           [window],
@@ -911,7 +717,7 @@ class MockMobileScannerController extends _i1.Mock
       ) as _i9.Future<void>);
 
   @override
-  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i6.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -920,7 +726,7 @@ class MockMobileScannerController extends _i1.Mock
       );
 
   @override
-  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i6.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -941,7 +747,7 @@ class MockMobileScannerController extends _i1.Mock
 /// A class which mocks [SnackbarService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSnackbarService extends _i1.Mock implements _i21.SnackbarService {
+class MockSnackbarService extends _i1.Mock implements _i19.SnackbarService {
   @override
   void showSnackbar(
     String? title,
@@ -963,15 +769,15 @@ class MockSnackbarService extends _i1.Mock implements _i21.SnackbarService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLocalizationService extends _i1.Mock
-    implements _i22.LocalizationService {
+    implements _i20.LocalizationService {
   @override
   String get snackbarSuccessTitle => (super.noSuchMethod(
         Invocation.getter(#snackbarSuccessTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSuccessTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSuccessTitle),
         ),
@@ -980,11 +786,11 @@ class MockLocalizationService extends _i1.Mock
   @override
   String get snackbarAttendanceRecorded => (super.noSuchMethod(
         Invocation.getter(#snackbarAttendanceRecorded),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAttendanceRecorded),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAttendanceRecorded),
         ),
@@ -993,11 +799,11 @@ class MockLocalizationService extends _i1.Mock
   @override
   String get snackbarErrorTitle => (super.noSuchMethod(
         Invocation.getter(#snackbarErrorTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarErrorTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarErrorTitle),
         ),
@@ -1006,11 +812,11 @@ class MockLocalizationService extends _i1.Mock
   @override
   String get snackbarInvalidQrCodeFormat => (super.noSuchMethod(
         Invocation.getter(#snackbarInvalidQrCodeFormat),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarInvalidQrCodeFormat),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarInvalidQrCodeFormat),
         ),
@@ -1020,15 +826,15 @@ class MockLocalizationService extends _i1.Mock
 /// A class which mocks [AppLocalizations].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
+class MockAppLocalizations extends _i1.Mock implements _i21.AppLocalizations {
   @override
   String get localeName => (super.noSuchMethod(
         Invocation.getter(#localeName),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#localeName),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#localeName),
         ),
@@ -1037,11 +843,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get appTitle => (super.noSuchMethod(
         Invocation.getter(#appTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#appTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#appTitle),
         ),
@@ -1050,11 +856,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get qrScannerScreenTitle => (super.noSuchMethod(
         Invocation.getter(#qrScannerScreenTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrScannerScreenTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrScannerScreenTitle),
         ),
@@ -1063,11 +869,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get detailsScreenTitle => (super.noSuchMethod(
         Invocation.getter(#detailsScreenTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#detailsScreenTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#detailsScreenTitle),
         ),
@@ -1076,11 +882,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get scanQrCodeInstruction => (super.noSuchMethod(
         Invocation.getter(#scanQrCodeInstruction),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#scanQrCodeInstruction),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#scanQrCodeInstruction),
         ),
@@ -1089,11 +895,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get scanningForQrCode => (super.noSuchMethod(
         Invocation.getter(#scanningForQrCode),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#scanningForQrCode),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#scanningForQrCode),
         ),
@@ -1102,11 +908,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get qrCodeDetected => (super.noSuchMethod(
         Invocation.getter(#qrCodeDetected),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrCodeDetected),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrCodeDetected),
         ),
@@ -1115,11 +921,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get buttonShukkin => (super.noSuchMethod(
         Invocation.getter(#buttonShukkin),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonShukkin),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonShukkin),
         ),
@@ -1128,11 +934,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get buttonTaikin => (super.noSuchMethod(
         Invocation.getter(#buttonTaikin),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonTaikin),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonTaikin),
         ),
@@ -1141,11 +947,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get buttonKyukeiKaishi => (super.noSuchMethod(
         Invocation.getter(#buttonKyukeiKaishi),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonKyukeiKaishi),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonKyukeiKaishi),
         ),
@@ -1154,11 +960,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get buttonKyukeiOwari => (super.noSuchMethod(
         Invocation.getter(#buttonKyukeiOwari),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonKyukeiOwari),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#buttonKyukeiOwari),
         ),
@@ -1167,11 +973,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get qrCodeLabel => (super.noSuchMethod(
         Invocation.getter(#qrCodeLabel),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrCodeLabel),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#qrCodeLabel),
         ),
@@ -1180,11 +986,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get noQrCodeOption => (super.noSuchMethod(
         Invocation.getter(#noQrCodeOption),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#noQrCodeOption),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#noQrCodeOption),
         ),
@@ -1193,11 +999,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get enterIdHint => (super.noSuchMethod(
         Invocation.getter(#enterIdHint),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#enterIdHint),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#enterIdHint),
         ),
@@ -1206,11 +1012,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get enterNameHint => (super.noSuchMethod(
         Invocation.getter(#enterNameHint),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#enterNameHint),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#enterNameHint),
         ),
@@ -1219,11 +1025,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get confirmButton => (super.noSuchMethod(
         Invocation.getter(#confirmButton),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#confirmButton),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#confirmButton),
         ),
@@ -1232,11 +1038,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get idEmptyError => (super.noSuchMethod(
         Invocation.getter(#idEmptyError),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#idEmptyError),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#idEmptyError),
         ),
@@ -1245,11 +1051,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get nameEmptyError => (super.noSuchMethod(
         Invocation.getter(#nameEmptyError),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#nameEmptyError),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#nameEmptyError),
         ),
@@ -1258,11 +1064,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarSuccessTitle => (super.noSuchMethod(
         Invocation.getter(#snackbarSuccessTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSuccessTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSuccessTitle),
         ),
@@ -1271,11 +1077,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarAttendanceRecorded => (super.noSuchMethod(
         Invocation.getter(#snackbarAttendanceRecorded),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAttendanceRecorded),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAttendanceRecorded),
         ),
@@ -1284,11 +1090,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarErrorTitle => (super.noSuchMethod(
         Invocation.getter(#snackbarErrorTitle),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarErrorTitle),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarErrorTitle),
         ),
@@ -1297,11 +1103,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarInvalidQrCodeFormat => (super.noSuchMethod(
         Invocation.getter(#snackbarInvalidQrCodeFormat),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarInvalidQrCodeFormat),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarInvalidQrCodeFormat),
         ),
@@ -1310,11 +1116,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarSyncComplete => (super.noSuchMethod(
         Invocation.getter(#snackbarSyncComplete),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSyncComplete),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarSyncComplete),
         ),
@@ -1323,11 +1129,11 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
   @override
   String get snackbarAllPendingRecordsSynced => (super.noSuchMethod(
         Invocation.getter(#snackbarAllPendingRecordsSynced),
-        returnValue: _i11.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAllPendingRecordsSynced),
         ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
+        returnValueForMissingStub: _i7.dummyValue<String>(
           this,
           Invocation.getter(#snackbarAllPendingRecordsSynced),
         ),
@@ -1338,9 +1144,10 @@ class MockAppLocalizations extends _i1.Mock implements _i23.AppLocalizations {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAttendanceRepository extends _i1.Mock
-    implements _i24.AttendanceRepository {
+    implements _i22.AttendanceRepository {
   @override
-  _i9.Future<int> saveAttendanceRecord(_i6.AttendanceRecordsCompanion? entry) =>
+  _i9.Future<int> saveAttendanceRecord(
+          _i11.AttendanceRecordsCompanion? entry) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAttendanceRecord,
@@ -1351,33 +1158,35 @@ class MockAttendanceRepository extends _i1.Mock
       ) as _i9.Future<int>);
 
   @override
-  _i9.Future<List<_i6.AttendanceRecord>> getAllAttendanceRecords() =>
+  _i9.Future<List<_i11.AttendanceRecord>> getAllAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllAttendanceRecords,
           [],
         ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
+        returnValue: _i9.Future<List<_i11.AttendanceRecord>>.value(
+            <_i11.AttendanceRecord>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i11.AttendanceRecord>>.value(
+                <_i11.AttendanceRecord>[]),
+      ) as _i9.Future<List<_i11.AttendanceRecord>>);
 
   @override
-  _i9.Future<List<_i6.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
+  _i9.Future<List<_i11.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUnsyncedAttendanceRecords,
           [],
         ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
+        returnValue: _i9.Future<List<_i11.AttendanceRecord>>.value(
+            <_i11.AttendanceRecord>[]),
+        returnValueForMissingStub:
+            _i9.Future<List<_i11.AttendanceRecord>>.value(
+                <_i11.AttendanceRecord>[]),
+      ) as _i9.Future<List<_i11.AttendanceRecord>>);
 
   @override
-  _i9.Future<void> markAsSynced(_i6.AttendanceRecord? record) =>
+  _i9.Future<void> markAsSynced(_i11.AttendanceRecord? record) =>
       (super.noSuchMethod(
         Invocation.method(
           #markAsSynced,
@@ -1386,847 +1195,4 @@ class MockAttendanceRepository extends _i1.Mock
         returnValue: _i9.Future<void>.value(),
         returnValueForMissingStub: _i9.Future<void>.value(),
       ) as _i9.Future<void>);
-}
-
-/// A class which mocks [AppDatabase].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockAppDatabase extends _i1.Mock implements _i6.AppDatabase {
-  @override
-  int get schemaVersion => (super.noSuchMethod(
-        Invocation.getter(#schemaVersion),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
-
-  @override
-  _i6.$AttendanceRecordsTable get attendanceRecords => (super.noSuchMethod(
-        Invocation.getter(#attendanceRecords),
-        returnValue: _Fake$AttendanceRecordsTable_5(
-          this,
-          Invocation.getter(#attendanceRecords),
-        ),
-        returnValueForMissingStub: _Fake$AttendanceRecordsTable_5(
-          this,
-          Invocation.getter(#attendanceRecords),
-        ),
-      ) as _i6.$AttendanceRecordsTable);
-
-  @override
-  get managers => throw UnsupportedError(
-      r'"managers" cannot be used without a mockito fallback generator.');
-
-  @override
-  Iterable<_i7.TableInfo<_i7.Table, Object?>> get allTables =>
-      (super.noSuchMethod(
-        Invocation.getter(#allTables),
-        returnValue: <_i7.TableInfo<_i7.Table, Object?>>[],
-        returnValueForMissingStub: <_i7.TableInfo<_i7.Table, Object?>>[],
-      ) as Iterable<_i7.TableInfo<_i7.Table, Object?>>);
-
-  @override
-  List<_i7.DatabaseSchemaEntity> get allSchemaEntities => (super.noSuchMethod(
-        Invocation.getter(#allSchemaEntities),
-        returnValue: <_i7.DatabaseSchemaEntity>[],
-        returnValueForMissingStub: <_i7.DatabaseSchemaEntity>[],
-      ) as List<_i7.DatabaseSchemaEntity>);
-
-  @override
-  _i7.GeneratedDatabase get attachedDatabase => (super.noSuchMethod(
-        Invocation.getter(#attachedDatabase),
-        returnValue: _FakeGeneratedDatabase_6(
-          this,
-          Invocation.getter(#attachedDatabase),
-        ),
-        returnValueForMissingStub: _FakeGeneratedDatabase_6(
-          this,
-          Invocation.getter(#attachedDatabase),
-        ),
-      ) as _i7.GeneratedDatabase);
-
-  @override
-  _i7.DriftDatabaseOptions get options => (super.noSuchMethod(
-        Invocation.getter(#options),
-        returnValue: _FakeDriftDatabaseOptions_7(
-          this,
-          Invocation.getter(#options),
-        ),
-        returnValueForMissingStub: _FakeDriftDatabaseOptions_7(
-          this,
-          Invocation.getter(#options),
-        ),
-      ) as _i7.DriftDatabaseOptions);
-
-  @override
-  _i7.MigrationStrategy get migration => (super.noSuchMethod(
-        Invocation.getter(#migration),
-        returnValue: _FakeMigrationStrategy_8(
-          this,
-          Invocation.getter(#migration),
-        ),
-        returnValueForMissingStub: _FakeMigrationStrategy_8(
-          this,
-          Invocation.getter(#migration),
-        ),
-      ) as _i7.MigrationStrategy);
-
-  @override
-  _i7.StreamQueryUpdateRules get streamUpdateRules => (super.noSuchMethod(
-        Invocation.getter(#streamUpdateRules),
-        returnValue: _FakeStreamQueryUpdateRules_9(
-          this,
-          Invocation.getter(#streamUpdateRules),
-        ),
-        returnValueForMissingStub: _FakeStreamQueryUpdateRules_9(
-          this,
-          Invocation.getter(#streamUpdateRules),
-        ),
-      ) as _i7.StreamQueryUpdateRules);
-
-  @override
-  _i7.DatabaseConnection get connection => (super.noSuchMethod(
-        Invocation.getter(#connection),
-        returnValue: _FakeDatabaseConnection_10(
-          this,
-          Invocation.getter(#connection),
-        ),
-        returnValueForMissingStub: _FakeDatabaseConnection_10(
-          this,
-          Invocation.getter(#connection),
-        ),
-      ) as _i7.DatabaseConnection);
-
-  @override
-  _i7.SqlTypes get typeMapping => (super.noSuchMethod(
-        Invocation.getter(#typeMapping),
-        returnValue: _i11.dummyValue<_i7.SqlTypes>(
-          this,
-          Invocation.getter(#typeMapping),
-        ),
-        returnValueForMissingStub: _i11.dummyValue<_i7.SqlTypes>(
-          this,
-          Invocation.getter(#typeMapping),
-        ),
-      ) as _i7.SqlTypes);
-
-  @override
-  _i7.QueryExecutor get executor => (super.noSuchMethod(
-        Invocation.getter(#executor),
-        returnValue: _FakeQueryExecutor_11(
-          this,
-          Invocation.getter(#executor),
-        ),
-        returnValueForMissingStub: _FakeQueryExecutor_11(
-          this,
-          Invocation.getter(#executor),
-        ),
-      ) as _i7.QueryExecutor);
-
-  @override
-  _i8.StreamQueryStore get streamQueries => (super.noSuchMethod(
-        Invocation.getter(#streamQueries),
-        returnValue: _FakeStreamQueryStore_12(
-          this,
-          Invocation.getter(#streamQueries),
-        ),
-        returnValueForMissingStub: _FakeStreamQueryStore_12(
-          this,
-          Invocation.getter(#streamQueries),
-        ),
-      ) as _i8.StreamQueryStore);
-
-  @override
-  _i7.DatabaseConnectionUser get resolvedEngine => (super.noSuchMethod(
-        Invocation.getter(#resolvedEngine),
-        returnValue: _FakeDatabaseConnectionUser_13(
-          this,
-          Invocation.getter(#resolvedEngine),
-        ),
-        returnValueForMissingStub: _FakeDatabaseConnectionUser_13(
-          this,
-          Invocation.getter(#resolvedEngine),
-        ),
-      ) as _i7.DatabaseConnectionUser);
-
-  @override
-  _i9.Future<int> saveAttendanceRecord(_i6.AttendanceRecordsCompanion? entry) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #saveAttendanceRecord,
-          [entry],
-        ),
-        returnValue: _i9.Future<int>.value(0),
-        returnValueForMissingStub: _i9.Future<int>.value(0),
-      ) as _i9.Future<int>);
-
-  @override
-  _i9.Future<List<_i6.AttendanceRecord>> getAllAttendanceRecords() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAllAttendanceRecords,
-          [],
-        ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
-
-  @override
-  _i9.Future<List<_i6.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getUnsyncedAttendanceRecords,
-          [],
-        ),
-        returnValue: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-        returnValueForMissingStub: _i9.Future<List<_i6.AttendanceRecord>>.value(
-            <_i6.AttendanceRecord>[]),
-      ) as _i9.Future<List<_i6.AttendanceRecord>>);
-
-  @override
-  _i9.Future<void> markAsSynced(_i6.AttendanceRecord? record) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #markAsSynced,
-          [record],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
-
-  @override
-  _i7.Migrator createMigrator() => (super.noSuchMethod(
-        Invocation.method(
-          #createMigrator,
-          [],
-        ),
-        returnValue: _FakeMigrator_14(
-          this,
-          Invocation.method(
-            #createMigrator,
-            [],
-          ),
-        ),
-        returnValueForMissingStub: _FakeMigrator_14(
-          this,
-          Invocation.method(
-            #createMigrator,
-            [],
-          ),
-        ),
-      ) as _i7.Migrator);
-
-  @override
-  _i9.Future<void> beforeOpen(
-    _i7.QueryExecutor? executor,
-    _i7.OpeningDetails? details,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #beforeOpen,
-          [
-            executor,
-            details,
-          ],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
-
-  @override
-  _i9.Future<void> close() => (super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
-
-  @override
-  _i9.Stream<List<Map<String, Object?>>> createStream(
-          _i8.QueryStreamFetcher? stmt) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #createStream,
-          [stmt],
-        ),
-        returnValue: _i9.Stream<List<Map<String, Object?>>>.empty(),
-        returnValueForMissingStub:
-            _i9.Stream<List<Map<String, Object?>>>.empty(),
-      ) as _i9.Stream<List<Map<String, Object?>>>);
-
-  @override
-  T alias<T, D>(
-    _i7.ResultSetImplementation<T, D>? table,
-    String? alias,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #alias,
-          [
-            table,
-            alias,
-          ],
-        ),
-        returnValue: _i11.dummyValue<T>(
-          this,
-          Invocation.method(
-            #alias,
-            [
-              table,
-              alias,
-            ],
-          ),
-        ),
-        returnValueForMissingStub: _i11.dummyValue<T>(
-          this,
-          Invocation.method(
-            #alias,
-            [
-              table,
-              alias,
-            ],
-          ),
-        ),
-      ) as T);
-
-  @override
-  void markTablesUpdated(Iterable<_i7.TableInfo<_i7.Table, dynamic>>? tables) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #markTablesUpdated,
-          [tables],
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  void notifyUpdates(Set<_i7.TableUpdate>? updates) => super.noSuchMethod(
-        Invocation.method(
-          #notifyUpdates,
-          [updates],
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  _i9.Stream<Set<_i7.TableUpdate>> tableUpdates(
-          [_i7.TableUpdateQuery? query = const _i7.TableUpdateQuery.any()]) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #tableUpdates,
-          [query],
-        ),
-        returnValue: _i9.Stream<Set<_i7.TableUpdate>>.empty(),
-        returnValueForMissingStub: _i9.Stream<Set<_i7.TableUpdate>>.empty(),
-      ) as _i9.Stream<Set<_i7.TableUpdate>>);
-
-  @override
-  _i9.Future<T> doWhenOpened<T>(
-          _i9.FutureOr<T> Function(_i7.QueryExecutor)? fn) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #doWhenOpened,
-          [fn],
-        ),
-        returnValue: _i11.ifNotNull(
-              _i11.dummyValueOrNull<T>(
-                this,
-                Invocation.method(
-                  #doWhenOpened,
-                  [fn],
-                ),
-              ),
-              (T v) => _i9.Future<T>.value(v),
-            ) ??
-            _FakeFuture_15<T>(
-              this,
-              Invocation.method(
-                #doWhenOpened,
-                [fn],
-              ),
-            ),
-        returnValueForMissingStub: _i11.ifNotNull(
-              _i11.dummyValueOrNull<T>(
-                this,
-                Invocation.method(
-                  #doWhenOpened,
-                  [fn],
-                ),
-              ),
-              (T v) => _i9.Future<T>.value(v),
-            ) ??
-            _FakeFuture_15<T>(
-              this,
-              Invocation.method(
-                #doWhenOpened,
-                [fn],
-              ),
-            ),
-      ) as _i9.Future<T>);
-
-  @override
-  _i7.InsertStatement<T, D> into<T extends _i7.Table, D>(
-          _i7.TableInfo<T, D>? table) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #into,
-          [table],
-        ),
-        returnValue: _FakeInsertStatement_16<T, D>(
-          this,
-          Invocation.method(
-            #into,
-            [table],
-          ),
-        ),
-        returnValueForMissingStub: _FakeInsertStatement_16<T, D>(
-          this,
-          Invocation.method(
-            #into,
-            [table],
-          ),
-        ),
-      ) as _i7.InsertStatement<T, D>);
-
-  @override
-  _i7.UpdateStatement<Tbl, R> update<Tbl extends _i7.Table, R>(
-          _i7.TableInfo<Tbl, R>? table) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #update,
-          [table],
-        ),
-        returnValue: _FakeUpdateStatement_17<Tbl, R>(
-          this,
-          Invocation.method(
-            #update,
-            [table],
-          ),
-        ),
-        returnValueForMissingStub: _FakeUpdateStatement_17<Tbl, R>(
-          this,
-          Invocation.method(
-            #update,
-            [table],
-          ),
-        ),
-      ) as _i7.UpdateStatement<Tbl, R>);
-
-  @override
-  _i7.SimpleSelectStatement<T, R> select<T extends _i7.HasResultSet, R>(
-    _i7.ResultSetImplementation<T, R>? table, {
-    bool? distinct = false,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #select,
-          [table],
-          {#distinct: distinct},
-        ),
-        returnValue: _FakeSimpleSelectStatement_18<T, R>(
-          this,
-          Invocation.method(
-            #select,
-            [table],
-            {#distinct: distinct},
-          ),
-        ),
-        returnValueForMissingStub: _FakeSimpleSelectStatement_18<T, R>(
-          this,
-          Invocation.method(
-            #select,
-            [table],
-            {#distinct: distinct},
-          ),
-        ),
-      ) as _i7.SimpleSelectStatement<T, R>);
-
-  @override
-  _i7.JoinedSelectStatement<T, R> selectOnly<T extends _i7.HasResultSet, R>(
-    _i7.ResultSetImplementation<T, R>? table, {
-    bool? distinct = false,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #selectOnly,
-          [table],
-          {#distinct: distinct},
-        ),
-        returnValue: _FakeJoinedSelectStatement_19<T, R>(
-          this,
-          Invocation.method(
-            #selectOnly,
-            [table],
-            {#distinct: distinct},
-          ),
-        ),
-        returnValueForMissingStub: _FakeJoinedSelectStatement_19<T, R>(
-          this,
-          Invocation.method(
-            #selectOnly,
-            [table],
-            {#distinct: distinct},
-          ),
-        ),
-      ) as _i7.JoinedSelectStatement<T, R>);
-
-  @override
-  _i7.DeleteStatement<T, D> delete<T extends _i7.Table, D>(
-          _i7.TableInfo<T, D>? table) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #delete,
-          [table],
-        ),
-        returnValue: _FakeDeleteStatement_20<T, D>(
-          this,
-          Invocation.method(
-            #delete,
-            [table],
-          ),
-        ),
-        returnValueForMissingStub: _FakeDeleteStatement_20<T, D>(
-          this,
-          Invocation.method(
-            #delete,
-            [table],
-          ),
-        ),
-      ) as _i7.DeleteStatement<T, D>);
-
-  @override
-  _i9.Future<int> customUpdate(
-    String? query, {
-    List<_i7.Variable<Object>>? variables = const [],
-    Set<_i7.TableInfo<_i7.Table, dynamic>>? updates,
-    _i7.UpdateKind? updateKind,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customUpdate,
-          [query],
-          {
-            #variables: variables,
-            #updates: updates,
-            #updateKind: updateKind,
-          },
-        ),
-        returnValue: _i9.Future<int>.value(0),
-        returnValueForMissingStub: _i9.Future<int>.value(0),
-      ) as _i9.Future<int>);
-
-  @override
-  _i9.Future<int> customInsert(
-    String? query, {
-    List<_i7.Variable<Object>>? variables = const [],
-    Set<_i7.TableInfo<_i7.Table, dynamic>>? updates,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customInsert,
-          [query],
-          {
-            #variables: variables,
-            #updates: updates,
-          },
-        ),
-        returnValue: _i9.Future<int>.value(0),
-        returnValueForMissingStub: _i9.Future<int>.value(0),
-      ) as _i9.Future<int>);
-
-  @override
-  _i9.Future<List<_i7.QueryRow>> customWriteReturning(
-    String? query, {
-    List<_i7.Variable<Object>>? variables = const [],
-    Set<_i7.TableInfo<_i7.Table, dynamic>>? updates,
-    _i7.UpdateKind? updateKind,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customWriteReturning,
-          [query],
-          {
-            #variables: variables,
-            #updates: updates,
-            #updateKind: updateKind,
-          },
-        ),
-        returnValue: _i9.Future<List<_i7.QueryRow>>.value(<_i7.QueryRow>[]),
-        returnValueForMissingStub:
-            _i9.Future<List<_i7.QueryRow>>.value(<_i7.QueryRow>[]),
-      ) as _i9.Future<List<_i7.QueryRow>>);
-
-  @override
-  _i7.Selectable<_i7.QueryRow> customSelect(
-    String? query, {
-    List<_i7.Variable<Object>>? variables = const [],
-    Set<_i7.ResultSetImplementation<dynamic, dynamic>>? readsFrom = const {},
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customSelect,
-          [query],
-          {
-            #variables: variables,
-            #readsFrom: readsFrom,
-          },
-        ),
-        returnValue: _FakeSelectable_21<_i7.QueryRow>(
-          this,
-          Invocation.method(
-            #customSelect,
-            [query],
-            {
-              #variables: variables,
-              #readsFrom: readsFrom,
-            },
-          ),
-        ),
-        returnValueForMissingStub: _FakeSelectable_21<_i7.QueryRow>(
-          this,
-          Invocation.method(
-            #customSelect,
-            [query],
-            {
-              #variables: variables,
-              #readsFrom: readsFrom,
-            },
-          ),
-        ),
-      ) as _i7.Selectable<_i7.QueryRow>);
-
-  @override
-  _i7.Selectable<_i7.QueryRow> customSelectQuery(
-    String? query, {
-    List<_i7.Variable<Object>>? variables = const [],
-    Set<_i7.ResultSetImplementation<dynamic, dynamic>>? readsFrom = const {},
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customSelectQuery,
-          [query],
-          {
-            #variables: variables,
-            #readsFrom: readsFrom,
-          },
-        ),
-        returnValue: _FakeSelectable_21<_i7.QueryRow>(
-          this,
-          Invocation.method(
-            #customSelectQuery,
-            [query],
-            {
-              #variables: variables,
-              #readsFrom: readsFrom,
-            },
-          ),
-        ),
-        returnValueForMissingStub: _FakeSelectable_21<_i7.QueryRow>(
-          this,
-          Invocation.method(
-            #customSelectQuery,
-            [query],
-            {
-              #variables: variables,
-              #readsFrom: readsFrom,
-            },
-          ),
-        ),
-      ) as _i7.Selectable<_i7.QueryRow>);
-
-  @override
-  _i9.Future<void> customStatement(
-    String? statement, [
-    List<dynamic>? args,
-  ]) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #customStatement,
-          [
-            statement,
-            args,
-          ],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
-
-  @override
-  _i9.Future<T> transaction<T>(
-    _i9.Future<T> Function()? action, {
-    bool? requireNew = false,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #transaction,
-          [action],
-          {#requireNew: requireNew},
-        ),
-        returnValue: _i11.ifNotNull(
-              _i11.dummyValueOrNull<T>(
-                this,
-                Invocation.method(
-                  #transaction,
-                  [action],
-                  {#requireNew: requireNew},
-                ),
-              ),
-              (T v) => _i9.Future<T>.value(v),
-            ) ??
-            _FakeFuture_15<T>(
-              this,
-              Invocation.method(
-                #transaction,
-                [action],
-                {#requireNew: requireNew},
-              ),
-            ),
-        returnValueForMissingStub: _i11.ifNotNull(
-              _i11.dummyValueOrNull<T>(
-                this,
-                Invocation.method(
-                  #transaction,
-                  [action],
-                  {#requireNew: requireNew},
-                ),
-              ),
-              (T v) => _i9.Future<T>.value(v),
-            ) ??
-            _FakeFuture_15<T>(
-              this,
-              Invocation.method(
-                #transaction,
-                [action],
-                {#requireNew: requireNew},
-              ),
-            ),
-      ) as _i9.Future<T>);
-
-  @override
-  _i9.Future<void> batch(_i9.FutureOr<void> Function(_i7.Batch)? runInBatch) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #batch,
-          [runInBatch],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
-
-  @override
-  _i7.GenerationContext $write(
-    _i7.Component? component, {
-    bool? hasMultipleTables,
-    int? startIndex,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #$write,
-          [component],
-          {
-            #hasMultipleTables: hasMultipleTables,
-            #startIndex: startIndex,
-          },
-        ),
-        returnValue: _FakeGenerationContext_22(
-          this,
-          Invocation.method(
-            #$write,
-            [component],
-            {
-              #hasMultipleTables: hasMultipleTables,
-              #startIndex: startIndex,
-            },
-          ),
-        ),
-        returnValueForMissingStub: _FakeGenerationContext_22(
-          this,
-          Invocation.method(
-            #$write,
-            [component],
-            {
-              #hasMultipleTables: hasMultipleTables,
-              #startIndex: startIndex,
-            },
-          ),
-        ),
-      ) as _i7.GenerationContext);
-
-  @override
-  _i7.GenerationContext $writeInsertable(
-    _i7.TableInfo<_i7.Table, dynamic>? table,
-    _i7.Insertable<dynamic>? insertable, {
-    int? startIndex,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #$writeInsertable,
-          [
-            table,
-            insertable,
-          ],
-          {#startIndex: startIndex},
-        ),
-        returnValue: _FakeGenerationContext_22(
-          this,
-          Invocation.method(
-            #$writeInsertable,
-            [
-              table,
-              insertable,
-            ],
-            {#startIndex: startIndex},
-          ),
-        ),
-        returnValueForMissingStub: _FakeGenerationContext_22(
-          this,
-          Invocation.method(
-            #$writeInsertable,
-            [
-              table,
-              insertable,
-            ],
-            {#startIndex: startIndex},
-          ),
-        ),
-      ) as _i7.GenerationContext);
-
-  @override
-  String $expandVar(
-    int? start,
-    int? amount,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #$expandVar,
-          [
-            start,
-            amount,
-          ],
-        ),
-        returnValue: _i11.dummyValue<String>(
-          this,
-          Invocation.method(
-            #$expandVar,
-            [
-              start,
-              amount,
-            ],
-          ),
-        ),
-        returnValueForMissingStub: _i11.dummyValue<String>(
-          this,
-          Invocation.method(
-            #$expandVar,
-            [
-              start,
-              amount,
-            ],
-          ),
-        ),
-      ) as String);
 }

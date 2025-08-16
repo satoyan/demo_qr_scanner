@@ -1,23 +1,25 @@
 import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 
 import 'package:demo_qr_scanner/core/database/app_database.dart';
 import 'package:demo_qr_scanner/features/attendance/data/repositories/attendance_repository_impl.dart';
 
-import '../../../../mocks.mocks.dart';
-
 void main() {
   late AttendanceRepositoryImpl repository;
-  late MockAppDatabase mockAppDatabase;
+  late AppDatabase appDatabase;
 
   setUp(() {
-    mockAppDatabase = MockAppDatabase();
-    repository = AttendanceRepositoryImpl(mockAppDatabase);
+    appDatabase = AppDatabase.fromConnection(DatabaseConnection(NativeDatabase.memory()));
+    repository = AttendanceRepositoryImpl(appDatabase);
+  });
+
+  tearDown(() async {
+    await appDatabase.close();
   });
 
   group('AttendanceRepositoryImpl', () {
-    test('saveAttendanceRecord calls AppDatabase.saveAttendanceRecord', () async {
+    test('saveAttendanceRecord saves a record', () async {
       final entry = AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),
@@ -25,36 +27,70 @@ void main() {
         status: const Value('clockIn'),
         isSynced: const Value(false),
       );
-      when(mockAppDatabase.saveAttendanceRecord(entry)).thenAnswer((_) async => 1);
 
-      await repository.saveAttendanceRecord(entry);
+      final id = await repository.saveAttendanceRecord(entry);
+      expect(id, greaterThan(0));
 
-      verify(mockAppDatabase.saveAttendanceRecord(entry)).called(1);
+      final records = await repository.getAllAttendanceRecords();
+      expect(records.length, 1);
+      expect(records.first.employeeId, 'emp1');
     });
 
-    test('getAllAttendanceRecords calls AppDatabase.getAllAttendanceRecords', () async {
-      when(mockAppDatabase.getAllAttendanceRecords()).thenAnswer((_) async => []);
+    test('getAllAttendanceRecords returns all records', () async {
+      await repository.saveAttendanceRecord(AttendanceRecordsCompanion(
+        employeeId: const Value('emp1'),
+        employeeName: const Value('John Doe'),
+        timestamp: Value(DateTime.now()),
+        status: const Value('clockIn'),
+        isSynced: const Value(false),
+      ));
+      await repository.saveAttendanceRecord(AttendanceRecordsCompanion(
+        employeeId: const Value('emp2'),
+        employeeName: const Value('Jane Doe'),
+        timestamp: Value(DateTime.now()),
+        status: const Value('clockOut'),
+        isSynced: const Value(true),
+      ));
 
-      await repository.getAllAttendanceRecords();
-
-      verify(mockAppDatabase.getAllAttendanceRecords()).called(1);
+      final records = await repository.getAllAttendanceRecords();
+      expect(records.length, 2);
     });
 
-    test('getUnsyncedAttendanceRecords calls AppDatabase.getUnsyncedAttendanceRecords', () async {
-      when(mockAppDatabase.getUnsyncedAttendanceRecords()).thenAnswer((_) async => []);
+    test('getUnsyncedAttendanceRecords returns only unsynced records', () async {
+      await repository.saveAttendanceRecord(AttendanceRecordsCompanion(
+        employeeId: const Value('emp1'),
+        employeeName: const Value('John Doe'),
+        timestamp: Value(DateTime.now()),
+        status: const Value('clockIn'),
+        isSynced: const Value(false),
+      ));
+      await repository.saveAttendanceRecord(AttendanceRecordsCompanion(
+        employeeId: const Value('emp2'),
+        employeeName: const Value('Jane Doe'),
+        timestamp: Value(DateTime.now()),
+        status: const Value('clockOut'),
+        isSynced: const Value(true),
+      ));
 
-      await repository.getUnsyncedAttendanceRecords();
-
-      verify(mockAppDatabase.getUnsyncedAttendanceRecords()).called(1);
+      final unsyncedRecords = await repository.getUnsyncedAttendanceRecords();
+      expect(unsyncedRecords.length, 1);
+      expect(unsyncedRecords.first.isSynced, false);
     });
 
-    test('markAsSynced calls AppDatabase.markAsSynced', () async {
-      final record = AttendanceRecord(id: 1, employeeId: 'emp1', employeeName: 'John Doe', timestamp: DateTime.now(), status: 'clockIn', isSynced: false);
-      when(mockAppDatabase.markAsSynced(record)).thenAnswer((_) async {});
+    test('markAsSynced updates record status', () async {
+      await repository.saveAttendanceRecord(AttendanceRecordsCompanion(
+        employeeId: const Value('emp1'),
+        employeeName: const Value('John Doe'),
+        timestamp: Value(DateTime.now()),
+        status: const Value('clockIn'),
+        isSynced: const Value(false),
+      ));
 
-      await repository.markAsSynced(record);
+      final recordToUpdate = (await repository.getAllAttendanceRecords()).first;
+      await repository.markAsSynced(recordToUpdate);
 
-      verify(mockAppDatabase.markAsSynced(record)).called(1);
+      final updatedRecord = (await repository.getAllAttendanceRecords()).first;
+      expect(updatedRecord.isSynced, true);
     });
   });
 }
