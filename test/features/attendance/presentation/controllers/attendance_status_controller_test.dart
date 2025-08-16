@@ -30,7 +30,7 @@ void main() {
     Get.put(mockNavigationService);
     Get.put(mockSnackbarService);
     Get.put(mockLocalizationService);
-  });;
+  });
 
   tearDown(() {
     Get.reset();

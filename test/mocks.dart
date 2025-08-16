@@ -23,12 +23,4 @@ import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 ])
 void main() {}
 
-class MockBuildContext extends Mock implements BuildContext {
-  @override
-  AppLocalizations get l10n => (super.noSuchMethod(
-        Invocation.getter(#l10n),
-        returnValue: MockAppLocalizations(),
-      ) as AppLocalizations);
-}
-
 

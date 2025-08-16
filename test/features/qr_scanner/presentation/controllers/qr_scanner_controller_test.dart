@@ -3,13 +3,12 @@ import 'dart:convert';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart';
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_scanner_controller.dart';
 import 'package:demo_qr_scanner/routes/app_pages.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';
-import 'package:demo_qr_scanner/l10n/app_localizations.dart';
+import 'package:demo_qr_scanner/core/services/localization_service.dart';
 
 void main() {
   late QrScannerController controller;
@@ -86,3 +85,4 @@ void main() {
     });
   });
 }
+
