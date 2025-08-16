@@ -13,8 +13,12 @@ import 'package:demo_qr_scanner/core/database/app_database.dart' as _i8;
 import 'package:demo_qr_scanner/core/database/database_service.dart' as _i6;
 import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart'
     as _i11;
+import 'package:demo_qr_scanner/core/services/localization_service.dart'
+    as _i21;
+import 'package:demo_qr_scanner/core/services/snackbar_service.dart' as _i20;
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'
     as _i12;
+import 'package:demo_qr_scanner/l10n/app_localizations.dart' as _i22;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/src/widgets/framework.dart' as _i4;
 import 'package:flutter/widgets.dart' as _i2;
@@ -788,4 +792,400 @@ class MockMobileScannerController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [SnackbarService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSnackbarService extends _i1.Mock implements _i20.SnackbarService {
+  @override
+  void showSnackbar(
+    String? title,
+    String? message,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #showSnackbar,
+          [
+            title,
+            message,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [LocalizationService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalizationService extends _i1.Mock
+    implements _i21.LocalizationService {
+  @override
+  String get snackbarSuccessTitle => (super.noSuchMethod(
+        Invocation.getter(#snackbarSuccessTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSuccessTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSuccessTitle),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarAttendanceRecorded => (super.noSuchMethod(
+        Invocation.getter(#snackbarAttendanceRecorded),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAttendanceRecorded),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAttendanceRecorded),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarErrorTitle => (super.noSuchMethod(
+        Invocation.getter(#snackbarErrorTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarErrorTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarErrorTitle),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarInvalidQrCodeFormat => (super.noSuchMethod(
+        Invocation.getter(#snackbarInvalidQrCodeFormat),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarInvalidQrCodeFormat),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarInvalidQrCodeFormat),
+        ),
+      ) as String);
+}
+
+/// A class which mocks [AppLocalizations].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAppLocalizations extends _i1.Mock implements _i22.AppLocalizations {
+  @override
+  String get localeName => (super.noSuchMethod(
+        Invocation.getter(#localeName),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#localeName),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#localeName),
+        ),
+      ) as String);
+
+  @override
+  String get appTitle => (super.noSuchMethod(
+        Invocation.getter(#appTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#appTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#appTitle),
+        ),
+      ) as String);
+
+  @override
+  String get qrScannerScreenTitle => (super.noSuchMethod(
+        Invocation.getter(#qrScannerScreenTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrScannerScreenTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrScannerScreenTitle),
+        ),
+      ) as String);
+
+  @override
+  String get detailsScreenTitle => (super.noSuchMethod(
+        Invocation.getter(#detailsScreenTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#detailsScreenTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#detailsScreenTitle),
+        ),
+      ) as String);
+
+  @override
+  String get scanQrCodeInstruction => (super.noSuchMethod(
+        Invocation.getter(#scanQrCodeInstruction),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#scanQrCodeInstruction),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#scanQrCodeInstruction),
+        ),
+      ) as String);
+
+  @override
+  String get scanningForQrCode => (super.noSuchMethod(
+        Invocation.getter(#scanningForQrCode),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#scanningForQrCode),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#scanningForQrCode),
+        ),
+      ) as String);
+
+  @override
+  String get qrCodeDetected => (super.noSuchMethod(
+        Invocation.getter(#qrCodeDetected),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrCodeDetected),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrCodeDetected),
+        ),
+      ) as String);
+
+  @override
+  String get buttonShukkin => (super.noSuchMethod(
+        Invocation.getter(#buttonShukkin),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonShukkin),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonShukkin),
+        ),
+      ) as String);
+
+  @override
+  String get buttonTaikin => (super.noSuchMethod(
+        Invocation.getter(#buttonTaikin),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonTaikin),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonTaikin),
+        ),
+      ) as String);
+
+  @override
+  String get buttonKyukeiKaishi => (super.noSuchMethod(
+        Invocation.getter(#buttonKyukeiKaishi),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonKyukeiKaishi),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonKyukeiKaishi),
+        ),
+      ) as String);
+
+  @override
+  String get buttonKyukeiOwari => (super.noSuchMethod(
+        Invocation.getter(#buttonKyukeiOwari),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonKyukeiOwari),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#buttonKyukeiOwari),
+        ),
+      ) as String);
+
+  @override
+  String get qrCodeLabel => (super.noSuchMethod(
+        Invocation.getter(#qrCodeLabel),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrCodeLabel),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#qrCodeLabel),
+        ),
+      ) as String);
+
+  @override
+  String get noQrCodeOption => (super.noSuchMethod(
+        Invocation.getter(#noQrCodeOption),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#noQrCodeOption),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#noQrCodeOption),
+        ),
+      ) as String);
+
+  @override
+  String get enterIdHint => (super.noSuchMethod(
+        Invocation.getter(#enterIdHint),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#enterIdHint),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#enterIdHint),
+        ),
+      ) as String);
+
+  @override
+  String get enterNameHint => (super.noSuchMethod(
+        Invocation.getter(#enterNameHint),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#enterNameHint),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#enterNameHint),
+        ),
+      ) as String);
+
+  @override
+  String get confirmButton => (super.noSuchMethod(
+        Invocation.getter(#confirmButton),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#confirmButton),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#confirmButton),
+        ),
+      ) as String);
+
+  @override
+  String get idEmptyError => (super.noSuchMethod(
+        Invocation.getter(#idEmptyError),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#idEmptyError),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#idEmptyError),
+        ),
+      ) as String);
+
+  @override
+  String get nameEmptyError => (super.noSuchMethod(
+        Invocation.getter(#nameEmptyError),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#nameEmptyError),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#nameEmptyError),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarSuccessTitle => (super.noSuchMethod(
+        Invocation.getter(#snackbarSuccessTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSuccessTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSuccessTitle),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarAttendanceRecorded => (super.noSuchMethod(
+        Invocation.getter(#snackbarAttendanceRecorded),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAttendanceRecorded),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAttendanceRecorded),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarErrorTitle => (super.noSuchMethod(
+        Invocation.getter(#snackbarErrorTitle),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarErrorTitle),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarErrorTitle),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarInvalidQrCodeFormat => (super.noSuchMethod(
+        Invocation.getter(#snackbarInvalidQrCodeFormat),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarInvalidQrCodeFormat),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarInvalidQrCodeFormat),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarSyncComplete => (super.noSuchMethod(
+        Invocation.getter(#snackbarSyncComplete),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSyncComplete),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarSyncComplete),
+        ),
+      ) as String);
+
+  @override
+  String get snackbarAllPendingRecordsSynced => (super.noSuchMethod(
+        Invocation.getter(#snackbarAllPendingRecordsSynced),
+        returnValue: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAllPendingRecordsSynced),
+        ),
+        returnValueForMissingStub: _i10.dummyValue<String>(
+          this,
+          Invocation.getter(#snackbarAllPendingRecordsSynced),
+        ),
+      ) as String);
 }

@@ -1,4 +1,6 @@
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
+import 'package:demo_qr_scanner/core/services/snackbar_service.dart';
+import 'package:demo_qr_scanner/core/services/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
@@ -16,6 +18,8 @@ class AttendanceStatusBinding extends Bindings {
       () => AttendanceStatusController(
         Get.find<AttendanceService>(),
         Get.find<NavigationService>(),
+        Get.find<SnackbarService>(),
+        Get.find<LocalizationService>(),
       ),
     );
   }

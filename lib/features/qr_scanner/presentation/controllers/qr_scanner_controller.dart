@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert'; // Import for jsonDecode
+import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
+import 'package:demo_qr_scanner/core/services/snackbar_service.dart';
+import 'package:demo_qr_scanner/core/services/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
@@ -11,8 +14,10 @@ class QrScannerController extends GetxController {
   late MobileScannerController scannerController;
   var isScanning = true.obs;
   final NavigationService _navigationService;
+  final SnackbarService _snackbarService;
+  final LocalizationService _localizationService;
 
-  QrScannerController(this._navigationService, {MobileScannerController? scannerController}) {
+  QrScannerController(this._navigationService, {MobileScannerController? scannerController, required SnackbarService snackbarService, required LocalizationService localizationService}) : _snackbarService = snackbarService, _localizationService = localizationService {
     this.scannerController = scannerController ?? MobileScannerController(facing: CameraFacing.front);
   }
 
@@ -54,11 +59,10 @@ class QrScannerController extends GetxController {
     } catch (e) {
       appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
-      // TODO: Implement a proper snackbar service to avoid using Get.snackbar directly in controllers.
-      /*Get.snackbar(
-        Get.context!.l10n.snackbarErrorTitle,
-        Get.context!.l10n.snackbarInvalidQrCodeFormat,
-      );*/
+      _snackbarService.showSnackbar(
+        _localizationService.snackbarErrorTitle,
+        _localizationService.snackbarInvalidQrCodeFormat,
+      );
       // Optionally, navigate to a different screen or restart scanning
     }
 

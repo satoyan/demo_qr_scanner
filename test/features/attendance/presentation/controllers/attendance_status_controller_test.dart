@@ -5,11 +5,14 @@ import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';
+import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 
 void main() {
   late AttendanceStatusController controller;
   late MockAttendanceService mockAttendanceService;
   late MockGetxNavigationService mockNavigationService;
+  late MockSnackbarService mockSnackbarService;
+  late MockLocalizationService mockLocalizationService;
 
   setUp(() {
     TestWidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +20,17 @@ void main() {
     Get.config(enableLog: false);
     mockAttendanceService = MockAttendanceService();
     mockNavigationService = MockGetxNavigationService();
-    controller = AttendanceStatusController(mockAttendanceService, mockNavigationService);
+    mockSnackbarService = MockSnackbarService();
+    mockLocalizationService = MockLocalizationService();
+
+    when(mockLocalizationService.snackbarSuccessTitle).thenReturn('成功');
+    when(mockLocalizationService.snackbarAttendanceRecorded).thenReturn('勤怠を記録しました');
+
+    controller = AttendanceStatusController(mockAttendanceService, mockNavigationService, mockSnackbarService, mockLocalizationService);
     Get.put(mockNavigationService);
-  });
+    Get.put(mockSnackbarService);
+    Get.put(mockLocalizationService);
+  });;
 
   tearDown(() {
     Get.reset();
@@ -38,6 +49,7 @@ void main() {
       // Assert: 勤怠記録が保存され、画面が戻ることを確認
       verify(mockAttendanceService.saveAttendanceRecord(any)).called(1);
       verify(mockNavigationService.back()).called(1);
+      verify(mockSnackbarService.showSnackbar(any, any)).called(1);
     });
   });
 }

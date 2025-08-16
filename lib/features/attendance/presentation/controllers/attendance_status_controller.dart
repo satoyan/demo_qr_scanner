@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
+import 'package:demo_qr_scanner/core/services/snackbar_service.dart';
+import 'package:demo_qr_scanner/core/services/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // For AttendanceRecordsCompanion
@@ -9,10 +11,12 @@ import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_stat
 class AttendanceStatusController extends GetxController {
   final AttendanceService _attendanceService;
   final NavigationService _navigationService;
+  final SnackbarService _snackbarService;
+  final LocalizationService _localizationService;
   final _currentTime = DateTime.now().obs;
   late Timer _timer;
 
-  AttendanceStatusController(this._attendanceService, this._navigationService);
+  AttendanceStatusController(this._attendanceService, this._navigationService, this._snackbarService, this._localizationService);
 
   DateTime get currentTime => _currentTime.value;
 
@@ -46,10 +50,9 @@ class AttendanceStatusController extends GetxController {
     );
     await _attendanceService.saveAttendanceRecord(newRecord);
     _navigationService.back();
-    // TODO: Implement a proper snackbar service to avoid using Get.snackbar directly in controllers.
-    /*Get.snackbar(
-      Get.context!.l10n.snackbarSuccessTitle,
-      '${Get.context!.l10n.snackbarAttendanceRecorded}: ${status.name}',
-    );*/
+    _snackbarService.showSnackbar(
+      _localizationService.snackbarSuccessTitle,
+      '${_localizationService.snackbarAttendanceRecorded}: ${status.name}',
+    );
   }
 }

@@ -3,16 +3,20 @@ import 'dart:convert';
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart';
 import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_scanner_controller.dart';
 import 'package:demo_qr_scanner/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';
+import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 
 void main() {
   late QrScannerController controller;
   late MockGetxNavigationService mockNavigationService;
   late MockMobileScannerController mockMobileScannerController;
+  late MockSnackbarService mockSnackbarService;
+  late MockLocalizationService mockLocalizationService;
 
   setUp(() {
     TestWidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +25,15 @@ void main() {
 
     mockNavigationService = MockGetxNavigationService();
     mockMobileScannerController = MockMobileScannerController();
+    mockSnackbarService = MockSnackbarService();
+    mockLocalizationService = MockLocalizationService();
 
-    controller = QrScannerController(mockNavigationService, scannerController: mockMobileScannerController);
+    when(mockLocalizationService.snackbarErrorTitle).thenReturn('エラー');
+    when(mockLocalizationService.snackbarInvalidQrCodeFormat).thenReturn('無効なQRコード形式です');
+
+    controller = QrScannerController(mockNavigationService, scannerController: mockMobileScannerController, snackbarService: mockSnackbarService, localizationService: mockLocalizationService);
+    Get.put(mockSnackbarService);
+    Get.put(mockLocalizationService);
   });
 
   tearDown(() {
@@ -71,6 +82,7 @@ void main() {
 
       // Assert: ナビゲーションサービスが呼ばれないことを確認
       verifyNever(mockNavigationService.toNamed(any, arguments: anyNamed('arguments')));
+      verify(mockSnackbarService.showSnackbar(any, any)).called(1);
     });
   });
 }
