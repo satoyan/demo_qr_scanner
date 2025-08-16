@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:get/get.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';

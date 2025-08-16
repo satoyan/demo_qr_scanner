@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:demo_qr_scanner/features/employee/domain/models/employee.dart';
@@ -6,7 +5,6 @@ import 'package:demo_qr_scanner/features/qr_scanner/presentation/controllers/qr_
 import 'package:demo_qr_scanner/routes/app_pages.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';

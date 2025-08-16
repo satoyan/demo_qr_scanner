@@ -1,6 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_qr_scanner/core/network/network_controller.dart';
-import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

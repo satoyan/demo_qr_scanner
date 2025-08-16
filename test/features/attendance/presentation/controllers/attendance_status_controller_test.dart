@@ -1,11 +1,8 @@
-import 'package:demo_qr_scanner/core/database/app_database.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/enums/attendance_status.dart';
 import 'package:demo_qr_scanner/features/attendance/presentation/controllers/attendance_status_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
-import 'package:drift/drift.dart';
 
 import '../../../../mocks.mocks.dart';
 
