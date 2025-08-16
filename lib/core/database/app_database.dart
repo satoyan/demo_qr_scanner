@@ -20,6 +20,8 @@ class AttendanceRecords extends Table {
 class AppDatabase extends _$AppDatabase implements DatabaseService {
   AppDatabase() : super(_openConnection());
 
+  AppDatabase.fromConnection(DatabaseConnection connection) : super(connection);
+
   @override
   int get schemaVersion => 1;
 
