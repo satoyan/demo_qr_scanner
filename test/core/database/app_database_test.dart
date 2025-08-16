@@ -16,6 +16,7 @@ void main() {
 
   group('AppDatabase', () {
     test('can save an attendance record', () async {
+      // 勤怠記録を保存できることをテスト
       final entry = AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),
@@ -32,6 +33,7 @@ void main() {
     });
 
     test('can get all attendance records', () async {
+      // 全ての勤怠記録を取得できることをテスト
       await database.saveAttendanceRecord(AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),
@@ -52,6 +54,7 @@ void main() {
     });
 
     test('can get unsynced attendance records', () async {
+      // 未同期の勤怠記録のみを取得できることをテスト
       await database.saveAttendanceRecord(AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),
@@ -73,6 +76,7 @@ void main() {
     });
 
     test('can mark an attendance record as synced', () async {
+      // 勤怠記録を同期済みとしてマークできることをテスト
       await database.saveAttendanceRecord(AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),

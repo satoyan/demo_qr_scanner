@@ -11,7 +11,7 @@ void main() {
     final testDateTime = DateTime(2025, 8, 16, 10, 30, 0);
 
     test('formatDate returns date in correct format', () {
-      // The expected day of the week for 2025-08-16 is Saturday, which is '土' in Japanese.
+      // 2025年8月16日の曜日は土曜日であり、日本語では「土」と表示されることを期待します。
       expect(DateTimeFormatter.formatDate(testDateTime), '2025年8月16日(土)');
     });
 

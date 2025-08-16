@@ -31,24 +31,24 @@ void main() {
 
   group('QrScannerController', () {
     test('navigateToManualEntry navigates to manual entry screen', () {
-      // Act
+      // Act: 手動入力画面へ遷移
       controller.navigateToManualEntry();
 
-      // Assert
+      // Assert: ナビゲーションサービスが手動入力画面へ遷移するよう呼ばれたことを確認
       verify(mockNavigationService.toNamed(Routes.manualEntry)).called(1);
     });
 
     test('handleQrCode navigates to attendance status screen on valid QR code', () async {
-      // Arrange
+      // Arrange: 有効なQRコード値を準備
       final employee = Employee(id: 'testId', name: 'testName');
       final qrCodeValue = jsonEncode(employee.toJson());
       when(mockMobileScannerController.stop()).thenAnswer((_) async {});
       when(mockMobileScannerController.start()).thenAnswer((_) async {});
 
-      // Act
+      // Act: QRコードを処理
       await controller.handleQrCode(qrCodeValue);
 
-      // Assert
+      // Assert: ナビゲーションサービスが出退勤ステータス画面へ遷移するよう呼ばれたことを確認
       verify(mockNavigationService.toNamed(
         Routes.attendanceStatus,
         arguments: argThat(
@@ -61,15 +61,15 @@ void main() {
     });
 
     test('handleQrCode does not navigate on invalid QR code', () async {
-      // Arrange
+      // Arrange: 無効なQRコード値を準備
       const qrCodeValue = 'invalid_json';
       when(mockMobileScannerController.stop()).thenAnswer((_) async {});
       when(mockMobileScannerController.start()).thenAnswer((_) async {});
 
-      // Act
+      // Act: QRコードを処理
       await controller.handleQrCode(qrCodeValue);
 
-      // Assert
+      // Assert: ナビゲーションサービスが呼ばれないことを確認
       verifyNever(mockNavigationService.toNamed(any, arguments: anyNamed('arguments')));
     });
   });

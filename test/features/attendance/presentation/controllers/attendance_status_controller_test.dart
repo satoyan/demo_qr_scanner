@@ -27,15 +27,15 @@ void main() {
 
   group('AttendanceStatusController', () {
     test('recordAttendance saves record and navigates back', () async {
-      // Arrange
+      // Arrange: テストデータの準備
       const employeeId = 'testId';
       const employeeName = 'testName';
       const status = AttendanceStatus.clockIn;
 
-      // Act
+      // Act: 勤怠記録を保存
       await controller.recordAttendance(employeeId, employeeName, status);
 
-      // Assert
+      // Assert: 勤怠記録が保存され、画面が戻ることを確認
       verify(mockAttendanceService.saveAttendanceRecord(any)).called(1);
       verify(mockNavigationService.back()).called(1);
     });
