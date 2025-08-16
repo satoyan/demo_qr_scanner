@@ -7,7 +7,7 @@ void main() {
   late AppDatabase database;
 
   setUp(() {
-    database = AppDatabase.fromConnection(DatabaseConnection.fromExecutor(NativeDatabase.memory()));
+    database = AppDatabase.fromConnection(DatabaseConnection(NativeDatabase.memory()));
   });
 
   tearDown(() async {
@@ -73,14 +73,13 @@ void main() {
     });
 
     test('can mark an attendance record as synced', () async {
-      final entry = AttendanceRecordsCompanion(
+      await database.saveAttendanceRecord(AttendanceRecordsCompanion(
         employeeId: const Value('emp1'),
         employeeName: const Value('John Doe'),
         timestamp: Value(DateTime.now()),
         status: const Value('clockIn'),
         isSynced: const Value(false),
-      );
-      final id = await database.saveAttendanceRecord(entry);
+      ));
 
       final recordToUpdate = (await database.getAllAttendanceRecords()).first;
       await database.markAsSynced(recordToUpdate);
