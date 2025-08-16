@@ -5,8 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart';
 // Import DatabaseService
-import '../../../../mocks.mocks.dart'; // Import generated mocks
-import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart';
+import '../../../../mocks.mocks.dart';
 
 void main() {
   late AttendanceService attendanceService;

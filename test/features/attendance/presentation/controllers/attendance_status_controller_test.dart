@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';
-import 'package:demo_qr_scanner/l10n/app_localizations.dart';
 
 void main() {
   late AttendanceStatusController controller;

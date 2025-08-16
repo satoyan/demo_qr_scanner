@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert'; // Import for jsonDecode
-import 'package:demo_qr_scanner/core/extensions/build_context_extension.dart';
 import 'package:demo_qr_scanner/core/services/navigation_service.dart';
 import 'package:demo_qr_scanner/core/services/snackbar_service.dart';
 import 'package:demo_qr_scanner/core/services/localization_service.dart';

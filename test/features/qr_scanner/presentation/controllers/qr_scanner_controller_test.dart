@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks.mocks.dart';
-import 'package:demo_qr_scanner/core/services/localization_service.dart';
 
 void main() {
   late QrScannerController controller;
@@ -85,4 +84,5 @@ void main() {
     });
   });
 }
+
 
