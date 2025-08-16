@@ -47,9 +47,10 @@ class AttendanceStatusController extends GetxController {
     );
     await _attendanceService.saveAttendanceRecord(newRecord);
     _navigationService.back();
-    Get.snackbar(
+    // TODO: Implement a proper snackbar service to avoid using Get.snackbar directly in controllers.
+    /*Get.snackbar(
       Get.context!.l10n.snackbarSuccessTitle,
       '${Get.context!.l10n.snackbarAttendanceRecorded}: ${status.name}',
-    );
+    );*/
   }
 }

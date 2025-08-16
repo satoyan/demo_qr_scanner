@@ -6,43 +6,40 @@ import 'package:demo_qr_scanner/core/utils/app_logger.dart'; // Import appLogger
 
 class NetworkController extends GetxController {
   final AttendanceService _attendanceService;
+  final Connectivity _connectivity;
   var isConnected = false.obs;
 
-  NetworkController(this._attendanceService);
+  NetworkController(this._attendanceService, this._connectivity);
 
   @override
   void onInit() {
     super.onInit();
-    _checkConnectivity();
-    Connectivity().onConnectivityChanged.listen((
-      List<ConnectivityResult> results,
-    ) {
-      _updateConnectivityStatus(results);
+    checkConnectivity();
+    _connectivity.onConnectivityChanged.listen((List<ConnectivityResult> results) {
+      updateConnectivityStatus(results);
     });
   }
 
-  Future<void> _checkConnectivity() async {
-    final List<ConnectivityResult> result = await Connectivity()
-        .checkConnectivity();
-    _updateConnectivityStatus(result);
+  Future<void> checkConnectivity() async {
+    final List<ConnectivityResult> result = await _connectivity.checkConnectivity();
+    updateConnectivityStatus(result);
   }
 
-  void _updateConnectivityStatus(List<ConnectivityResult> results) {
+  void updateConnectivityStatus(List<ConnectivityResult> results) {
     if (!results.contains(ConnectivityResult.none)) {
       isConnected.value = true;
-      _syncData(); // Trigger sync when online
+      syncData(); // Trigger sync when online
     } else {
       isConnected.value = false;
     }
   }
 
-  Future<void> _syncData() async {
+  Future<void> syncData() async {
     if (!isConnected.value) {
       return; // Only sync if connected
     }
 
-    final unsyncedRecords = await _attendanceService
-        .getUnsyncedAttendanceRecords();
+    final unsyncedRecords = await _attendanceService.getUnsyncedAttendanceRecords();
     if (unsyncedRecords.isEmpty) {
       appLogger.d('No unsynced records to send.');
       return;

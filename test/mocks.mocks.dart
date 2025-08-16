@@ -3,18 +3,29 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
-import 'dart:ui' as _i8;
+import 'dart:async' as _i7;
+import 'dart:ui' as _i9;
 
-import 'package:demo_qr_scanner/core/database/app_database.dart' as _i7;
-import 'package:demo_qr_scanner/core/database/database_service.dart' as _i5;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i13;
+import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart'
+    as _i14;
+import 'package:demo_qr_scanner/core/database/app_database.dart' as _i8;
+import 'package:demo_qr_scanner/core/database/database_service.dart' as _i6;
 import 'package:demo_qr_scanner/core/services/getx_navigation_service.dart'
-    as _i10;
+    as _i11;
+import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart'
+    as _i12;
 import 'package:flutter/foundation.dart' as _i3;
-import 'package:flutter/src/widgets/form.dart' as _i2;
 import 'package:flutter/src/widgets/framework.dart' as _i4;
+import 'package:flutter/widgets.dart' as _i2;
+import 'package:mobile_scanner/src/enums/barcode_format.dart' as _i18;
+import 'package:mobile_scanner/src/enums/camera_facing.dart' as _i17;
+import 'package:mobile_scanner/src/enums/detection_speed.dart' as _i16;
+import 'package:mobile_scanner/src/mobile_scanner_controller.dart' as _i15;
+import 'package:mobile_scanner/src/objects/barcode_capture.dart' as _i19;
+import 'package:mobile_scanner/src/objects/mobile_scanner_state.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i9;
+import 'package:mockito/src/dummies.dart' as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -85,57 +96,68 @@ class _FakeDiagnosticsNode_3 extends _i1.SmartFake
       super.toString();
 }
 
+class _FakeMobileScannerState_4 extends _i1.SmartFake
+    implements _i5.MobileScannerState {
+  _FakeMobileScannerState_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [DatabaseService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDatabaseService extends _i1.Mock implements _i5.DatabaseService {
+class MockDatabaseService extends _i1.Mock implements _i6.DatabaseService {
   @override
-  _i6.Future<int> saveAttendanceRecord(_i7.AttendanceRecordsCompanion? entry) =>
+  _i7.Future<int> saveAttendanceRecord(_i8.AttendanceRecordsCompanion? entry) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAttendanceRecord,
           [entry],
         ),
-        returnValue: _i6.Future<int>.value(0),
-        returnValueForMissingStub: _i6.Future<int>.value(0),
-      ) as _i6.Future<int>);
+        returnValue: _i7.Future<int>.value(0),
+        returnValueForMissingStub: _i7.Future<int>.value(0),
+      ) as _i7.Future<int>);
 
   @override
-  _i6.Future<List<_i7.AttendanceRecord>> getAllAttendanceRecords() =>
+  _i7.Future<List<_i8.AttendanceRecord>> getAllAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllAttendanceRecords,
           [],
         ),
-        returnValue: _i6.Future<List<_i7.AttendanceRecord>>.value(
-            <_i7.AttendanceRecord>[]),
-        returnValueForMissingStub: _i6.Future<List<_i7.AttendanceRecord>>.value(
-            <_i7.AttendanceRecord>[]),
-      ) as _i6.Future<List<_i7.AttendanceRecord>>);
+        returnValue: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+        returnValueForMissingStub: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+      ) as _i7.Future<List<_i8.AttendanceRecord>>);
 
   @override
-  _i6.Future<List<_i7.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
+  _i7.Future<List<_i8.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
       (super.noSuchMethod(
         Invocation.method(
           #getUnsyncedAttendanceRecords,
           [],
         ),
-        returnValue: _i6.Future<List<_i7.AttendanceRecord>>.value(
-            <_i7.AttendanceRecord>[]),
-        returnValueForMissingStub: _i6.Future<List<_i7.AttendanceRecord>>.value(
-            <_i7.AttendanceRecord>[]),
-      ) as _i6.Future<List<_i7.AttendanceRecord>>);
+        returnValue: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+        returnValueForMissingStub: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+      ) as _i7.Future<List<_i8.AttendanceRecord>>);
 
   @override
-  _i6.Future<void> markAsSynced(_i7.AttendanceRecord? record) =>
+  _i7.Future<void> markAsSynced(_i8.AttendanceRecord? record) =>
       (super.noSuchMethod(
         Invocation.method(
           #markAsSynced,
           [record],
         ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }
 
 /// A class which mocks [GlobalKey].
@@ -269,7 +291,7 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
       );
 
   @override
-  void setState(_i8.VoidCallback? fn) => super.noSuchMethod(
+  void setState(_i9.VoidCallback? fn) => super.noSuchMethod(
         Invocation.method(
           #setState,
           [fn],
@@ -333,14 +355,14 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
           #toStringShort,
           [],
         ),
-        returnValue: _i9.dummyValue<String>(
+        returnValue: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
             [],
           ),
         ),
-        returnValueForMissingStub: _i9.dummyValue<String>(
+        returnValueForMissingStub: _i10.dummyValue<String>(
           this,
           Invocation.method(
             #toStringShort,
@@ -392,9 +414,9 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetxNavigationService extends _i1.Mock
-    implements _i10.GetxNavigationService {
+    implements _i11.GetxNavigationService {
   @override
-  _i6.Future<T?>? toNamed<T>(
+  _i7.Future<T?>? toNamed<T>(
     String? pageName, {
     dynamic arguments,
   }) =>
@@ -405,7 +427,7 @@ class MockGetxNavigationService extends _i1.Mock
           {#arguments: arguments},
         ),
         returnValueForMissingStub: null,
-      ) as _i6.Future<T?>?);
+      ) as _i7.Future<T?>?);
 
   @override
   void back<T>({T? result}) => super.noSuchMethod(
@@ -418,7 +440,7 @@ class MockGetxNavigationService extends _i1.Mock
       );
 
   @override
-  _i6.Future<T?>? offNamed<T>(
+  _i7.Future<T?>? offNamed<T>(
     String? pageName, {
     dynamic arguments,
   }) =>
@@ -429,10 +451,10 @@ class MockGetxNavigationService extends _i1.Mock
           {#arguments: arguments},
         ),
         returnValueForMissingStub: null,
-      ) as _i6.Future<T?>?);
+      ) as _i7.Future<T?>?);
 
   @override
-  _i6.Future<T?>? offAllNamed<T>(
+  _i7.Future<T?>? offAllNamed<T>(
     String? pageName, {
     dynamic arguments,
   }) =>
@@ -443,5 +465,327 @@ class MockGetxNavigationService extends _i1.Mock
           {#arguments: arguments},
         ),
         returnValueForMissingStub: null,
-      ) as _i6.Future<T?>?);
+      ) as _i7.Future<T?>?);
+}
+
+/// A class which mocks [AttendanceService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAttendanceService extends _i1.Mock implements _i12.AttendanceService {
+  @override
+  _i7.Future<void> saveAttendanceRecord(
+          _i8.AttendanceRecordsCompanion? entry) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAttendanceRecord,
+          [entry],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<List<_i8.AttendanceRecord>> getAllAttendanceRecords() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllAttendanceRecords,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+        returnValueForMissingStub: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+      ) as _i7.Future<List<_i8.AttendanceRecord>>);
+
+  @override
+  _i7.Future<List<_i8.AttendanceRecord>> getUnsyncedAttendanceRecords() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUnsyncedAttendanceRecords,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+        returnValueForMissingStub: _i7.Future<List<_i8.AttendanceRecord>>.value(
+            <_i8.AttendanceRecord>[]),
+      ) as _i7.Future<List<_i8.AttendanceRecord>>);
+
+  @override
+  _i7.Future<void> markAsSynced(_i8.AttendanceRecord? record) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #markAsSynced,
+          [record],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+}
+
+/// A class which mocks [Connectivity].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockConnectivity extends _i1.Mock implements _i13.Connectivity {
+  @override
+  _i7.Stream<List<_i14.ConnectivityResult>> get onConnectivityChanged =>
+      (super.noSuchMethod(
+        Invocation.getter(#onConnectivityChanged),
+        returnValue: _i7.Stream<List<_i14.ConnectivityResult>>.empty(),
+        returnValueForMissingStub:
+            _i7.Stream<List<_i14.ConnectivityResult>>.empty(),
+      ) as _i7.Stream<List<_i14.ConnectivityResult>>);
+
+  @override
+  _i7.Future<List<_i14.ConnectivityResult>> checkConnectivity() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #checkConnectivity,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i14.ConnectivityResult>>.value(
+            <_i14.ConnectivityResult>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i14.ConnectivityResult>>.value(
+                <_i14.ConnectivityResult>[]),
+      ) as _i7.Future<List<_i14.ConnectivityResult>>);
+}
+
+/// A class which mocks [MobileScannerController].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockMobileScannerController extends _i1.Mock
+    implements _i15.MobileScannerController {
+  @override
+  bool get autoStart => (super.noSuchMethod(
+        Invocation.getter(#autoStart),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i16.DetectionSpeed get detectionSpeed => (super.noSuchMethod(
+        Invocation.getter(#detectionSpeed),
+        returnValue: _i16.DetectionSpeed.noDuplicates,
+        returnValueForMissingStub: _i16.DetectionSpeed.noDuplicates,
+      ) as _i16.DetectionSpeed);
+
+  @override
+  int get detectionTimeoutMs => (super.noSuchMethod(
+        Invocation.getter(#detectionTimeoutMs),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+
+  @override
+  _i17.CameraFacing get facing => (super.noSuchMethod(
+        Invocation.getter(#facing),
+        returnValue: _i17.CameraFacing.front,
+        returnValueForMissingStub: _i17.CameraFacing.front,
+      ) as _i17.CameraFacing);
+
+  @override
+  List<_i18.BarcodeFormat> get formats => (super.noSuchMethod(
+        Invocation.getter(#formats),
+        returnValue: <_i18.BarcodeFormat>[],
+        returnValueForMissingStub: <_i18.BarcodeFormat>[],
+      ) as List<_i18.BarcodeFormat>);
+
+  @override
+  bool get returnImage => (super.noSuchMethod(
+        Invocation.getter(#returnImage),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  bool get torchEnabled => (super.noSuchMethod(
+        Invocation.getter(#torchEnabled),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  bool get useNewCameraSelector => (super.noSuchMethod(
+        Invocation.getter(#useNewCameraSelector),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i7.Stream<_i19.BarcodeCapture> get barcodes => (super.noSuchMethod(
+        Invocation.getter(#barcodes),
+        returnValue: _i7.Stream<_i19.BarcodeCapture>.empty(),
+        returnValueForMissingStub: _i7.Stream<_i19.BarcodeCapture>.empty(),
+      ) as _i7.Stream<_i19.BarcodeCapture>);
+
+  @override
+  _i5.MobileScannerState get value => (super.noSuchMethod(
+        Invocation.getter(#value),
+        returnValue: _FakeMobileScannerState_4(
+          this,
+          Invocation.getter(#value),
+        ),
+        returnValueForMissingStub: _FakeMobileScannerState_4(
+          this,
+          Invocation.getter(#value),
+        ),
+      ) as _i5.MobileScannerState);
+
+  @override
+  set value(_i5.MobileScannerState? newValue) => super.noSuchMethod(
+        Invocation.setter(
+          #value,
+          newValue,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  _i7.Future<_i19.BarcodeCapture?> analyzeImage(String? path) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #analyzeImage,
+          [path],
+        ),
+        returnValue: _i7.Future<_i19.BarcodeCapture?>.value(),
+        returnValueForMissingStub: _i7.Future<_i19.BarcodeCapture?>.value(),
+      ) as _i7.Future<_i19.BarcodeCapture?>);
+
+  @override
+  _i4.Widget buildCameraView() => (super.noSuchMethod(
+        Invocation.method(
+          #buildCameraView,
+          [],
+        ),
+        returnValue: _FakeWidget_2(
+          this,
+          Invocation.method(
+            #buildCameraView,
+            [],
+          ),
+        ),
+        returnValueForMissingStub: _FakeWidget_2(
+          this,
+          Invocation.method(
+            #buildCameraView,
+            [],
+          ),
+        ),
+      ) as _i4.Widget);
+
+  @override
+  _i7.Future<void> resetZoomScale() => (super.noSuchMethod(
+        Invocation.method(
+          #resetZoomScale,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> setZoomScale(double? zoomScale) => (super.noSuchMethod(
+        Invocation.method(
+          #setZoomScale,
+          [zoomScale],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> start({_i17.CameraFacing? cameraDirection}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #start,
+          [],
+          {#cameraDirection: cameraDirection},
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> stop() => (super.noSuchMethod(
+        Invocation.method(
+          #stop,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> switchCamera() => (super.noSuchMethod(
+        Invocation.method(
+          #switchCamera,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> toggleTorch() => (super.noSuchMethod(
+        Invocation.method(
+          #toggleTorch,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> updateScanWindow(_i9.Rect? window) => (super.noSuchMethod(
+        Invocation.method(
+          #updateScanWindow,
+          [window],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<void> dispose() => (super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

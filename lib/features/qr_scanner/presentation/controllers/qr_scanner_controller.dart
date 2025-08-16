@@ -13,32 +13,33 @@ class QrScannerController extends GetxController {
   var isScanning = true.obs;
   final NavigationService _navigationService;
 
-  QrScannerController(this._navigationService);
+  QrScannerController(this._navigationService, {MobileScannerController? scannerController}) {
+    this.scannerController = scannerController ?? MobileScannerController(facing: CameraFacing.front);
+  }
 
   @override
   void onInit() {
     super.onInit();
-    scannerController = MobileScannerController(facing: CameraFacing.front);
-    _initScanner();
+    initScanner();
   }
 
-  Future<void> _initScanner() async {
+  Future<void> initScanner() async {
     await scannerController.start();
-    scannerController.barcodes.listen(_onBarcodeDetected);
+    scannerController.barcodes.listen(onBarcodeDetected);
   }
 
-  Future<void> _onBarcodeDetected(BarcodeCapture capture) async {
+  Future<void> onBarcodeDetected(BarcodeCapture capture) async {
     appLogger.d(
       'Detected barcode: ${capture.barcodes.first.rawValue}',
     ); // Use appLogger
     final List<Barcode> barcodes = capture.barcodes;
     if (barcodes.isNotEmpty && isScanning.value) {
       isScanning.value = false; // Update UI to show detected state
-      await _handleQrCode(barcodes.first.rawValue);
+      await handleQrCode(barcodes.first.rawValue);
     }
   }
 
-  Future<void> _handleQrCode(String? qrCodeValue) async {
+  Future<void> handleQrCode(String? qrCodeValue) async {
     if (qrCodeValue == null) {
       return;
     }
@@ -54,10 +55,11 @@ class QrScannerController extends GetxController {
     } catch (e) {
       appLogger.e('Error parsing QR code value as JSON: ', error: e);
       // Handle invalid QR code format, e.g., show an error message
-      Get.snackbar(
+      // TODO: Implement a proper snackbar service to avoid using Get.snackbar directly in controllers.
+      /*Get.snackbar(
         Get.context!.l10n.snackbarErrorTitle,
         Get.context!.l10n.snackbarInvalidQrCodeFormat,
-      );
+      );*/
       // Optionally, navigate to a different screen or restart scanning
     }
 
