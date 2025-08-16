@@ -6,14 +6,15 @@ import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_s
 import 'package:demo_qr_scanner/core/database/app_database.dart';
 // Import DatabaseService
 import '../../../../mocks.mocks.dart'; // Import generated mocks
+import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart';
 
 void main() {
   late AttendanceService attendanceService;
-  late MockDatabaseService mockDatabaseService;
+  late MockAttendanceRepository mockAttendanceRepository;
 
   setUp(() {
-    mockDatabaseService = MockDatabaseService();
-    attendanceService = AttendanceService(mockDatabaseService);
+    mockAttendanceRepository = MockAttendanceRepository();
+    attendanceService = AttendanceService(mockAttendanceRepository);
   });
 
   group('AttendanceService', () {
@@ -27,12 +28,12 @@ void main() {
       );
 
       when(
-        mockDatabaseService.saveAttendanceRecord(testRecord),
+        mockAttendanceRepository.saveAttendanceRecord(testRecord),
       ).thenAnswer((_) async => 1); // Simulate successful insert
 
       await attendanceService.saveAttendanceRecord(testRecord);
 
-      verify(mockDatabaseService.saveAttendanceRecord(testRecord)).called(1);
+      verify(mockAttendanceRepository.saveAttendanceRecord(testRecord)).called(1);
     });
 
     test('getAllAttendanceRecords returns all records', () async {
@@ -57,13 +58,13 @@ void main() {
 
       // Mock the select statement
       when(
-        mockDatabaseService.getAllAttendanceRecords(),
+        mockAttendanceRepository.getAllAttendanceRecords(),
       ).thenAnswer((_) async => records);
 
       final result = await attendanceService.getAllAttendanceRecords();
 
       expect(result, records);
-      verify(mockDatabaseService.getAllAttendanceRecords()).called(1);
+      verify(mockAttendanceRepository.getAllAttendanceRecords()).called(1);
     });
 
     test('getUnsyncedAttendanceRecords returns only unsynced records', () async {
@@ -91,7 +92,7 @@ void main() {
       // For simplicity, we'll mock the final .get() call after a hypothetical filter.
       // In a real scenario, you might need to mock the `where` method on `Selectable`.
       when(
-        mockDatabaseService.getUnsyncedAttendanceRecords(),
+        mockAttendanceRepository.getUnsyncedAttendanceRecords(),
       ).thenAnswer((_) async => [records[0]]); // Only return the unsynced one
 
       final result = await attendanceService.getUnsyncedAttendanceRecords();
@@ -113,12 +114,12 @@ void main() {
 
       // Mock the update operation
       when(
-        mockDatabaseService.markAsSynced(recordToSync),
+        mockAttendanceRepository.markAsSynced(recordToSync),
       ).thenAnswer((_) async => {}); // Simulate successful update
 
       await attendanceService.markAsSynced(recordToSync);
 
-      verify(mockDatabaseService.markAsSynced(recordToSync)).called(1);
+      verify(mockAttendanceRepository.markAsSynced(recordToSync)).called(1);
     });
   });
 }

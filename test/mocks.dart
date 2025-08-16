@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:mockito/annotations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_qr_scanner/features/attendance/domain/services/attendance_service.dart';
-import 'package:demo_qr_scanner/core/database/database_service.dart'; // Import DatabaseService
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:demo_qr_scanner/core/services/snackbar_service.dart';
 import 'package:demo_qr_scanner/core/services/localization_service.dart';
 import 'package:demo_qr_scanner/l10n/app_localizations.dart';
+import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart';
+import 'package:demo_qr_scanner/core/database/app_database.dart';
 
 @GenerateNiceMocks([
-  MockSpec<DatabaseService>(as: #MockDatabaseService),
   MockSpec<GlobalKey<FormState>>(as: #MockFormStateKey),
   MockSpec<FormState>(),
   MockSpec<GetxNavigationService>(),
@@ -20,7 +20,18 @@ import 'package:demo_qr_scanner/l10n/app_localizations.dart';
   MockSpec<SnackbarService>(),
   MockSpec<LocalizationService>(as: #MockLocalizationService),
   MockSpec<AppLocalizations>(as: #MockAppLocalizations),
+  MockSpec<AttendanceRepository>(as: #MockAttendanceRepository),
+  MockSpec<AppDatabase>(as: #MockAppDatabase, unsupportedMembers: {#managers}),
 ])
 void main() {}
+
+class MockBuildContext extends Mock implements BuildContext {
+  @override
+  AppLocalizations get l10n => (super.noSuchMethod(
+        Invocation.getter(#l10n),
+        returnValue: MockAppLocalizations(),
+      ) as AppLocalizations);
+}
+
 
 

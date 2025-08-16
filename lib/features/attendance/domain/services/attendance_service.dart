@@ -1,24 +1,24 @@
-import 'package:demo_qr_scanner/core/database/database_service.dart'; // Import DatabaseService
+import 'package:demo_qr_scanner/features/attendance/domain/repositories/attendance_repository.dart';
 import 'package:demo_qr_scanner/core/database/app_database.dart'; // Import AppDatabase for types
 
 class AttendanceService {
-  final DatabaseService _db;
+  final AttendanceRepository _attendanceRepository;
 
-  AttendanceService(this._db);
+  AttendanceService(this._attendanceRepository);
 
   Future<void> saveAttendanceRecord(AttendanceRecordsCompanion entry) async {
-    await _db.saveAttendanceRecord(entry);
+    await _attendanceRepository.saveAttendanceRecord(entry);
   }
 
   Future<List<AttendanceRecord>> getAllAttendanceRecords() {
-    return _db.getAllAttendanceRecords();
+    return _attendanceRepository.getAllAttendanceRecords();
   }
 
   Future<List<AttendanceRecord>> getUnsyncedAttendanceRecords() {
-    return _db.getUnsyncedAttendanceRecords();
+    return _attendanceRepository.getUnsyncedAttendanceRecords();
   }
 
   Future<void> markAsSynced(AttendanceRecord record) async {
-    await _db.markAsSynced(record);
+    await _attendanceRepository.markAsSynced(record);
   }
 }
