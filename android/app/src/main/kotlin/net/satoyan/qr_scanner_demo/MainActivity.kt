@@ -1,4 +1,4 @@
-package com.example.demo_qr_scanner
+package net.satoyan.qr_scanner_demo
 
 import io.flutter.embedding.android.FlutterActivity
 
