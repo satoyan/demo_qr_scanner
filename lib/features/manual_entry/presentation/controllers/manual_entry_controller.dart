@@ -8,7 +8,7 @@ import 'package:demo_qr_scanner/core/utils/app_logger.dart';
 class ManualEntryController extends GetxController {
   final TextEditingController idController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  final GlobalKey<FormState> formKey = Get.find();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final router = Get.find<NavigationService>();
 
   void confirmEntry() {
