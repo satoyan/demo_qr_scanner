@@ -1,4 +1,4 @@
-.PHONY: all run build clean get analyze test lint format build_runner_watch build_runner_build l10n copy-db
+.PHONY: all run build clean get analyze test lint format build_runner_watch build_runner_build l10n copy-db upload-android-firebase
 
 all: run
 
@@ -48,3 +48,9 @@ l10n:
 copy-db:
 	@echo "Copying database from device..."
 	adb shell 'run-as com.example.demo_qr_scanner cat /data/data/com.example.demo_qr_scanner/app_flutter/db.sqlite' > db.sqlite
+
+upload-android-firebase:
+	@echo "Building Android release APK..."
+	flutter build apk --release
+	@echo "Uploading to Firebase App Distribution..."
+	firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app $(FIREBASE_APP_ID_DEV) --groups "testers"
