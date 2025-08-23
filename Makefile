@@ -4,7 +4,7 @@ all: run
 
 run:
 	@echo "Running Flutter application..."
-	flutter run
+	flutter run --flavor local
 
 clean:
 	@echo "Cleaning Flutter project..."
@@ -47,10 +47,10 @@ l10n:
 
 copy-db:
 	@echo "Copying database from device..."
-	adb shell 'run-as com.example.demo_qr_scanner cat /data/data/com.example.demo_qr_scanner/app_flutter/db.sqlite' > db.sqlite
+	adb shell 'run-as net.satoyan.qr_scanner_demo.local cat /data/data/net.satoyan.qr_scanner_demo.local/app_flutter/db.sqlite' > db.sqlite
 
 upload-android-firebase:
 	@echo "Building Android release APK..."
-	flutter build apk --release
+	flutter build apk --profile --flavor dev
 	@echo "Uploading to Firebase App Distribution..."
 	firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app $(FIREBASE_APP_ID_DEV) --groups "testers"
